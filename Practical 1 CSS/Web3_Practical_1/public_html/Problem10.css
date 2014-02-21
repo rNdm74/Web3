@@ -1,0 +1,59 @@
+#StarTrek1 {
+    background: url(images/StarTrek1.jpg);
+}
+
+#StarTrek2 {
+    background: url(images/StarTrek2.jpg);
+}
+
+#StarTrek3 {
+    background: url(images/StarTrek3.jpg);
+}
+
+ul li {
+    display: inline-block;
+    width: 220px;
+    height: 220px;
+    border-radius: 110px;
+    margin-right: 50px;
+}
+
+.ring {
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 200px; 
+    border-radius: 110px;
+    border:  10px solid;
+    border-color: rgba(255,255,255,0.8);    
+}
+
+.alert {
+    display: none;    
+}
+
+.ring:hover {
+    border: 0px solid black;
+}
+
+.ring:hover .alert{
+    display: block;    
+    position: absolute;    
+    width: 220px;
+    height: 220px;  
+    border-radius: 110px;
+    background-color: rgba(0,50,51,0.8);    
+    text-align: center;    
+    color: #fff;    
+    font-family: "Verdana", Geneva, sans-serif;
+    font-weight: bold;    
+}
+
+
+.alert h3 {
+    margin-top: 50px;
+    width: 200px;
+    text-transform:uppercase;
+    text-indent: 25px;
+    white-space: pre-line;
+}
