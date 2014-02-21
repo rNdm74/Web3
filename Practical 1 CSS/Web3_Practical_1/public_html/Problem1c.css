@@ -1,0 +1,63 @@
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 300px;
+    height:auto;
+
+}
+
+.box{
+    display: block;
+    position: absolute;
+    
+    width: 300px;
+    height: 100px;
+    line-height:100px;
+        
+    padding-top: 0;
+    vertical-align: bottom;
+    text-align: center;
+
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.one{
+    background-color: #000066;
+    color:#ffffff;
+
+    margin: 0 0 0 0;
+    z-index: 5;
+}
+
+.two{
+    background-color: #333385;
+    color:#ffffff;
+
+    margin: 20px 0 0 20px;
+    z-index: 4;
+}
+
+.three{
+    background-color: #8080B2;
+
+    margin: 40px 0 0 40px;
+    z-index: 3;    
+}
+
+.four{
+    background-color: #CCCCE0;
+
+    margin: 60px 0 0 60px;
+    z-index: 2;
+}
+
+.five{
+    background-color: #ffffff;
+
+    margin: 80px 0 0 80px;
+    z-index: 1;
+}

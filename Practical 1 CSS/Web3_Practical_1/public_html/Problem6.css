@@ -1,0 +1,72 @@
+.container {
+    margin-left: auto;
+    margin-right:auto;
+    width: 1000px;
+}
+
+.container ul li {
+    display: inline-block;
+    line-height: 25px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.container ul li a {
+    color: darkred;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.link{
+    display: inline-block;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: bottom;
+    text-align: center;
+    
+    background-color: white;
+    border: 2px solid darkred;
+    color: darkred;    
+    
+}
+
+.reptiles .mammals{
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: bottom;
+    text-align: center;
+    
+    background-color: white;
+    border: 2px solid darkred;
+    color: darkred;        
+    
+}
+
+.link:hover {
+    background-color: darkred;
+    color: white;
+}
+
+.link:hover a{
+    color: white;
+}
+
+.link:active{
+    background-color: darkred;
+    color: white;
+}
+
+.prev:before {
+    content: "<< ";
+    color: darkred;
+}
+
+.next:after {
+    content: " >>";
+    color: darkred;
+}

@@ -1,0 +1,38 @@
+.container {
+    margin-left: auto;
+    margin-right:auto;
+    width: 200px;
+    
+    //border: 2px solid black;
+}
+
+.container ul li {
+    display: block;
+    line-height: 50px;
+    vertical-align: middle;
+    
+    //width: 200px;
+    margin-left: -40px;
+    
+    
+    //text-decoration: none;
+    //background: url('images/checkmark.png') left no-repeat;
+}
+
+.container ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.container li {
+    background-color: darkslateblue;
+    border: 2px solid black;
+    
+    padding-left: 50px;
+}
+.container li:hover {
+    background-color: green;
+    border: 2px solid black;
+    
+    padding-left: 50px;
+}
