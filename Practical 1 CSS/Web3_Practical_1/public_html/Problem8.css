@@ -1,0 +1,45 @@
+body {
+    font: small Verdana, sans-serif;
+    color: #000000;
+    padding: 30px;
+    margin: 0;
+}
+
+.container p {
+    margin-top: 0;
+    margin-bottom: 2em;
+    font-size: 100%;
+    line-height: 2em;
+}
+
+.container{
+    width: 800px;
+    height: 600px;
+    
+    margin-left: auto;
+    margin-right:auto;
+    
+    padding: 20px 25px;
+    
+    background: url("images/lightTexture.png") top left repeat;
+    
+    border: 1px solid #cccce0;
+}
+
+#boxout {
+    background: url("images/blue.jpg") top left repeat;
+    float: right;
+    width: 200px;
+    
+    margin-left: 30px;
+    margin-bottom: 20px;
+    
+    padding: 20px;
+    
+    border-radius: 10px;    
+}
+
+#boxout p {
+    font-size: 90%;
+    line-height: 1.4em;
+}
