@@ -1,0 +1,158 @@
+body 
+{
+    padding-top: 100px;
+}
+
+#container 
+{
+    width: 400px;
+    height: 400px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 1px solid black;
+    border-radius: 15%;
+
+    position: relative;
+}
+
+.circle 
+{
+    width: 25%;
+    height: 25%;
+    line-height: 50px;
+    text-align: center;
+    display:block;
+    position: absolute;
+    border-radius: 100%;
+    
+    -moz-animation: moveDown 5s ease 0s infinite;    
+    -moz-animation-timing-function: ease;
+}
+
+@-moz-keyframes moveDown
+{
+    0%
+    {
+        top: 0px;
+        left: 37.5%;
+        background: red;  
+    }
+
+    20%
+    {
+        top: 75%;
+        left: 75%;
+        background: yellow; 
+    }
+
+    40%
+    {
+        top: 37.5%;
+        left: 0px;
+        background: blue;  
+    }
+
+    60%
+    {
+        top: 37.5%;
+        left: 75%;
+        background: blue;  
+    }
+
+    80%
+    {
+        top: 75%;
+        left: 0px;
+        background: yellow;  
+    }
+    
+    100%
+    {
+        top: 0px;
+        left: 37.5%;
+        background: red;  
+    }
+}
+
+#circleDelay1
+{
+    -moz-animation-delay: 0s;
+}
+#circleDelay2
+{
+    -moz-animation-delay: 0.25s;
+}
+#circleDelay3
+{
+    -moz-animation-delay: 0.5s;
+}
+#circleDelay4
+{
+    -moz-animation-delay: 0.75s;
+}
+#circleDelay5
+{
+    -moz-animation-delay: 1s;
+}
+#circleDelay6
+{
+    -moz-animation-delay: 1.25s;
+}
+#circleDelay7
+{
+    -moz-animation-delay: 1.5s;
+}
+#circleDelay8
+{
+    -moz-animation-delay: 1.75s;
+}
+#circleDelay9
+{
+    -moz-animation-delay: 2s;
+}
+#circleDelay10
+{
+    -moz-animation-delay: 2.25s;
+}
+#circleDelay11
+{
+    -moz-animation-delay: 2.5s;
+}
+#circleDelay12
+{
+    -moz-animation-delay: 2.75s;
+}
+#circleDelay13
+{
+    -moz-animation-delay: 3s;
+}
+#circleDelay14
+{
+    -moz-animation-delay: 3.25s;
+}
+#circleDelay15
+{
+    -moz-animation-delay: 3.5s;
+}
+#circleDelay16
+{
+    -moz-animation-delay: 3.75s;
+}
+#circleDelay17
+{
+    -moz-animation-delay: 4s;
+}
+#circleDelay18
+{
+    -moz-animation-delay: 4.25s;
+}
+#circleDelay19
+{
+    -moz-animation-delay: 4.5s;
+}
+#circleDelay20
+{
+    -moz-animation-delay: 4.75s;
+}
