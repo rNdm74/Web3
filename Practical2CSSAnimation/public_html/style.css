@@ -5,8 +5,8 @@ body
 
 #container 
 {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
 
     margin-left: auto;
     margin-right: auto;
@@ -28,7 +28,7 @@ body
     border-radius: 100%;
     
     -moz-animation: moveDown 5s ease 0s infinite;    
-    -moz-animation-timing-function: ease;
+    -moz-animation-timing-function: linear;
 }
 
 @-moz-keyframes moveDown

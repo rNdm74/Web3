@@ -1,0 +1,42 @@
+#container
+{
+    width: 200px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding: 10px;
+    
+    display: table;
+    position: relative;
+    border: 1px solid darkgrey;
+    
+    
+}
+
+#display
+{
+    width: 100%;
+    height: 50px;
+    border-radius: 2px;
+    
+    display: table-row;
+}
+
+#display h3
+{
+    text-align: center;
+}
+
+#text
+{
+    display: table-row;
+    width: 96%;
+    text-align: center;
+}
+
+#button
+{
+    display: table-row;
+    width: 100%;
+}
