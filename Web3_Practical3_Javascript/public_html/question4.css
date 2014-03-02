@@ -1,0 +1,12 @@
+#container
+{
+    width: 400px;
+    background: whitesmoke;
+}
+
+#display
+{
+    background: white;
+    height: auto;
+    border: 1px solid black;
+}
