@@ -1,3 +1,4 @@
+// CONSTANTS
 var COMMON = "common";
 var SCIENTIFIC = "scientific";
 
@@ -11,25 +12,14 @@ function init()
 
 function testNaming()
 {
-    display("Bluebird", COMMON);
-    display("Sialia sialis", SCIENTIFIC);
-}
-
-function display(name, type)
-{
-    var testSpecimen = new specimen(name, getDisplayFunction(type));
-    var displayName = testSpecimen.displayFunction(testSpecimen.specimenName);
-    alert(displayName);
-}
-
-function specimen(specimenName, displayFunction)
-{
-    this.specimenName = specimenName;
-    this.displayFunction = displayFunction;
+    // Display the to species in an alert
+    display(new specimen("Bluebird", getDisplayFunction(COMMON)));
+    display(new specimen("Sialia sialis", getDisplayFunction(SCIENTIFIC)));
 }
 
 function getDisplayFunction(specimenType)
 {
+    // Return the appropriate specimen formatting based on type
     if (specimenType === "common")
         return displayCommon;
     else if (specimenType === "scientific")
@@ -44,4 +34,17 @@ function displayCommon(specimenName)
 function displayScientific(specimenName)
 {
     return specimenName.toUpperCase();
+}
+
+function specimen(specimenName, displayFunction)
+{
+    this.specimenName = specimenName;
+    this.displayFunction = displayFunction;
+}
+
+function display(testSpecimen)
+{
+    // Displays in a alert the specimen in the appropriate format    
+    var displayName = testSpecimen.displayFunction(testSpecimen.specimenName);
+    alert(displayName);
 }

@@ -1,33 +1,74 @@
+var ANIMALLIST = ["Antelope","Buffalo","Cheetah","Donkey","Eagle"];
+
 window.onload = init;
 
 function init()
 {
     var button = document.getElementById("bDisplay");
-    button.onclick = reverseListOrder;
-}
-
-function reverseListOrder()
-{
+    button.value = "Add";
+    button.onclick = addToList;
+    
+    // Create default list
     var animalList = document.getElementById("ulAnimals");
     
-    var list = "";
+    // Clears all children in the element
+    clearChildrenInElement(animalList);   
     
-    var animals = animalList.nodeValue;
-    
-    for (var animal in animals) 
-    { 
-        //list +=  child.firstChild.nodeValue;
-        list += animal.nodeName + "\n";
+    // Updates children in element
+    updateChildrenInElement(animalList, ANIMALLIST);
+}
+
+function addToList()
+{
+    var textBox = document.getElementById("tbInputField");
+    var animalList = document.getElementById("ulAnimals");        
+    var listOfNodeValuesInElement = getChildrenNodeValues(animalList);
+
+    clearChildrenInElement(animalList);
+    // Bad name
+    addNodeValue(listOfNodeValuesInElement, textBox.value);
+    updateChildrenInElement(animalList, listOfNodeValuesInElement);
+}
+
+function getChildrenNodeValues(nodeList)
+{
+    var array = [];
+
+    for (i = 0; i < nodeList.children.length; i++) {
+        array.push(nodeList.children[i].firstChild.nodeValue);
     }
-    
-    for (i = 0; i < animalList.childNodes.length; i++) {
-        
-        list += animalList.children[1].firstChild.nodeValue;         
+
+    return array;
+}
+
+function addNodeValue(nodeList, node)
+{
+    if (node !== '')
+    {
+        nodeList.push(ucfirst(node));
+        nodeList.sort();
     }
-    
-    alert(list);
-    
-    
-    var firstAnimal = animalList.children[0];    
-    alert(firstAnimal.firstChild.nodeValue);
+}
+
+function ucfirst(str) {
+    var firstLetter = str.slice(0, 1);
+    return firstLetter.toUpperCase() + str.substring(1);
+}
+
+function updateChildrenInElement(nodeList, nodeListItems)
+{
+    for (i = 0; i < nodeListItems.length; i++) {
+        var newLiNode = document.createElement("li");
+        var newTextNode = document.createTextNode(nodeListItems[i]);
+        newLiNode.appendChild(newTextNode);
+        nodeList.appendChild(newLiNode);
+    }
+}
+
+function clearChildrenInElement(element)
+{
+    // Removing all children from an element
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 }
