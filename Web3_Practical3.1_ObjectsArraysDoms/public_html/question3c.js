@@ -25,7 +25,7 @@ function displayObjectInTable(object)
     // Style the table
     newTableNode.style.borderCollapse = "collapse";
     newTableNode.style.padding = "5px";
-    newTableNode.style.textAlign = "center" 
+    newTableNode.style.textAlign = "center"; 
     newTableNode.style.display = "block";
     newTableNode.style.position = "absolute";
     newTableNode.style.top = "80%";
