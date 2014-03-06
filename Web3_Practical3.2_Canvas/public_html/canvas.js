@@ -1,73 +1,105 @@
+// Global variables
 var canvas;
 var ctx;
 var timer;
-var house;
 
+// Constants for all sprites
+var SIZE = {width: 100, height: 100};
+var POSITION = {x: 0, y: 450};
+var SPEED = {x: 5, y: 0};
 
-var panda = new Sprite(100, 400, "pandaSheet.png", 9, 3);
-var cow = new Sprite(0, 400, "cowSheet.png", 8, 1);
-var santa = new Sprite(100, 425, "SantaSheet.png", 4, 4);
-var cat = new Sprite(-50, 450, "catSheet.png", 2, 4);
-var dwarf = new Sprite(100, 450, "dwarfSheet.png", 2, 2);
-var volt = new Sprite(-100, 300, "voltSheet.png", 5, 2);
+// Sprite format: new Sprite(numberOfFramesXY , Imagefile)
+// Sprite positions will be dynamically assigned on initialization
+var panda = new Sprite({x: 9, y: 3}, "pandaSheet.png");
+var cow = new Sprite({x: 8, y: 1}, "cowSheet.png");
+var santa = new Sprite({x: 4, y: 4}, "SantaSheet.png");
+var cat = new Sprite({x: 2, y: 4}, "catSheet.png");
+var dwarf = new Sprite({x: 2, y: 2}, "dwarfSheet.png");
+var volt = new Sprite({x: 5, y: 2}, "voltSheet.png");
 
-var sprites = [ panda, cow, santa, cat, dwarf, volt ];
+// Test adding new sprite with only two lines
+// Create the panda and add to the sprites array
+var panda2 = new Sprite({x: 9, y: 3}, "pandaSheet.png");
 
-function Sprite(x, y, filename, xFrames, yFrames) {
-    this.image = new Image();
-    this.image.src = filename;
-    this.srcWidth = this.image.width / xFrames;
-    this.srcHeight = this.image.height / yFrames;
-    this.srcX = 0;
-    this.srcY = 0;
-    this.dstWidth = this.srcWidth;
-    this.dstHeight = this.srcHeight;
-    this.dstX = x;
-    this.dstY = y;
-    this.nFrames = 0;
-    
-    this.update = function() {
-        
-        this.srcX = this.srcWidth * (++this.nFrames % (xFrames-1));
-                
-        this.dstX += 5;
-        if (this.dstX > canvas.width)
-        {
-            this.dstX = -this.dstWidth;
-        }
-    };
-    this.draw = function() {
-        ctx.drawImage(this.image, this.srcX, this.srcY, this.srcWidth, this.srcHeight, this.dstX, this.dstY, this.dstWidth, this.dstHeight);
-    };
-}
+// Add new sprite to sprites array for drawing      
+var sprites = [panda, cow, santa, cat, dwarf, volt, panda2];
 
-function drawBackground(filename) {
-    var house = new Image();
-    house.src = filename;
-    ctx.drawImage(house, 0, 0, house.width, house.height, 0, 0, canvas.width, canvas.height);
-}
+window.onload = function() {
+    init();
+};
 
-function init() {    
+function init() {
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext("2d");
-    
+
+    // Initialise start positions for sprites
+    for (i = 0; i < sprites.length; i++)
+        sprites[i].dst.x = -sprites[i].dst.width * i; // -sprites[i] so they start off screen
+
+    // Runs the draw function every 50 ms 
     timer = setInterval(draw, 50);
-    return timer;
 }
 
 function draw() {
+    // Clears the rectangle on each draw
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw the background image first
     drawBackground("houses.jpg");
-    
-    
+
+    // Move, Update and Draw all sprites to the screen
     for (i = 0; i < sprites.length; i++) {
+        sprites[i].move();
         sprites[i].update();
         sprites[i].draw();
     }
 }
 
-window.onload = function()
-{
-    init();
-};
+function drawBackground(filename) {
+    var background = new Image();
+    background.src = filename;
+    ctx.drawImage(background, 0, 0, background.width, background.height, 0, 0, canvas.width, canvas.height);
+}
+
+function Sprite(nFrames, filename) {
+    this.image = new Image();
+    this.image.src = filename;
+
+    this.src = {
+        x: 0,
+        y: 0,
+        width: this.image.width / nFrames.x,
+        height: this.image.height / nFrames.y
+    };
+
+    this.dst = {
+        x: POSITION.x,
+        y: POSITION.y,
+        width: SIZE.width,
+        height: SIZE.height
+    };
+
+    this.nFrames = {x: nFrames.x, y: nFrames.y};
+    this.frame = {x: 0, y: 0};
+
+    this.move = function() {
+        this.dst.x += SPEED.x;
+        if (this.dst.x > canvas.width)
+        {
+            // Makes the sprite appear off the screen and then move into view
+            this.dst.x = -this.dst.width;
+        }
+    };
+
+    this.update = function() {
+        this.src.x = this.src.width * (++this.frame.x % this.nFrames.x);
+        this.src.y = this.src.height * (this.frame.y % this.nFrames.y);
+
+        if (this.frame.x % this.nFrames.x === 0)
+            this.frame.y++;
+    };
+
+    this.draw = function() {
+        ctx.drawImage(this.image, this.src.x, this.src.y, this.src.width, this.src.height, this.dst.x, this.dst.y, this.dst.width, this.dst.height);
+    };
+}
