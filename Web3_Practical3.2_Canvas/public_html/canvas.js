@@ -1,48 +1,55 @@
 /* GLOBAL NAMESPACE */
 
-// CONSTANTS
-var POS = {x: 0, y: 440};
-var SIZE = {width: 150, height: 150};
+// CONSTANTS   
+var CANVAS_ID = "myCanvas";
+var CANVAS_CONTEXT = "2d";
+var BACKGROUND = "houses.jpg";
+
+// SPRITE CONSTANTS
+var DST = {x: 0, y: 440, width: 150, height: 150};
 var SPEED = {x: 5, y: 0};
 
-// Variables
-var canvas;
-var ctx;
-var timer;
-
-var background = new Background("houses.jpg");
-
-// Sprite format: new Sprite(numberOfFramesXY , Imagefile)
+// SPRITES
+// Sprite format: new Sprite(PathToImage, numberOfImageFramesXY)
 // Sprite positions will be dynamically assigned on initialization
-var panda = new Sprite({x: 9, y: 3}, "pandaSheet.png");
-var cow = new Sprite({x: 8, y: 1}, "cowSheet.png");
-var santa = new Sprite({x: 4, y: 4}, "SantaSheet.png");
-var cat = new Sprite({x: 2, y: 4}, "catSheet.png");
-var dwarf = new Sprite({x: 2, y: 2}, "dwarfSheet.png");
-var volt = new Sprite({x: 5, y: 2}, "voltSheet.png");
+var PANDA = new Sprite("pandaSheet.png", {x: 9, y: 3});
+var COW = new Sprite("cowSheet.png", {x: 8, y: 1});
+var SANTA = new Sprite("SantaSheet.png", {x: 4, y: 4});
+var CAT = new Sprite("catSheet.png", {x: 2, y: 4});
+var DWARF = new Sprite("dwarfSheet.png", {x: 2, y: 2});
+var VOLT = new Sprite("voltSheet.png", {x: 5, y: 2});
 
+// TEST
 // Test adding new sprite with only two lines
 // Create the panda and add to the sprites array
-var panda2 = new Sprite({x: 9, y: 3}, "pandaSheet.png");
+var TEST_PANDA = new Sprite("pandaSheet.png", {x: 9, y: 3});
 
-// Add new sprite to sprites array for drawing      
-var sprites = [panda, cow, santa, cat, dwarf, volt, panda2];
+// SPRITE ARRAY
+// Add new sprite to be drawn to screen      
+var sprites = [PANDA, COW, SANTA, CAT, DWARF, VOLT, TEST_PANDA];
 
-// PLEASE DO NOT MODIFY ANYTHING BELOW THIS //
-// ######################################## //
+// VARIABLES
+var canvas;
+var context;
+var background;
+var timer;
+
+/****************************************************************************** 
+ *                 PLEASE DO NOT MODIFY ANYTHING BELOW THIS                   * 
+ ******************************************************************************/
+
 window.onload = function() {
     init();
 };
 
 function init() {
-    canvas = document.getElementById("myCanvas");
-    ctx = canvas.getContext("2d");
-
+    canvas = document.getElementById(CANVAS_ID);
+    context = canvas.getContext(CANVAS_CONTEXT);
+    background = new Background(BACKGROUND);
+    
     // Initialize start positions for sprites
     for (i = 0; i < sprites.length; i++)
         sprites[i].dst.x = -sprites[i].dst.width * i; // -sprites[i] so they start off screen
-
-    draw();
 
     // Runs the draw function every 50 ms 
     timer = setInterval(draw, 50);
@@ -50,7 +57,7 @@ function init() {
 
 function draw() {
     // Clears the rectangle on each draw
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw the background image first
     background.draw();
@@ -66,17 +73,13 @@ function draw() {
 function Background(filename) {
     this.background = new Image();
     this.background.src = filename;
-    this.draw = function() {        
-        ctx.drawImage(this.background, 0, 0, this.background.width, this.background.height, 0, 0, canvas.width, canvas.height);
-        
-        // Note: If joggers do not animate refresh browser
-        ctx.font = "italic 20pt Calibri";
-        ctx.fillText("Note: If you do not see the joggers, please refresh your page", 10, 20);
+    this.draw = function() {
+        context.drawImage(this.background, 0, 0, this.background.width, this.background.height, 0, 0, canvas.width, canvas.height);
     };
 }
 
 // Sprite Constructor
-function Sprite(nFrames, filename) {
+function Sprite(filename, nFrames) {
     this.image = new Image();
     this.image.src = filename;
 
@@ -93,10 +96,10 @@ function Sprite(nFrames, filename) {
 
     // Destination rectangle
     this.dst = {
-        x: POS.x,
-        y: POS.y,
-        width: SIZE.width,
-        height: SIZE.height
+        x: DST.x,
+        y: DST.y,
+        width: DST.width,
+        height: DST.height
     };
 }
 
@@ -124,5 +127,5 @@ Sprite.prototype.update = function() {
 };
 
 Sprite.prototype.draw = function() {
-    ctx.drawImage(this.image, this.src.x, this.src.y, this.src.width, this.src.height, this.dst.x, this.dst.y, this.dst.width, this.dst.height);
+    context.drawImage(this.image, this.src.x, this.src.y, this.src.width, this.src.height, this.dst.x, this.dst.y, this.dst.width, this.dst.height);
 };
