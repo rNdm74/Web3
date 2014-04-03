@@ -30,7 +30,7 @@
      </p>
      <asp:Button ID="bDisplay" runat="server" onclick="bDisplay_Click" 
          Text="Display" Width="128px" />
-     <asp:Table ID="tbDisplay" runat="server">
+     <asp:Table ID="tblDisplay" runat="server">
      </asp:Table>
      </form>
  </body>
