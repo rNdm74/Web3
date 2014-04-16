@@ -9,9 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     </div>
-    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Reset Database" />
     </form>
 </body>
 </html>
