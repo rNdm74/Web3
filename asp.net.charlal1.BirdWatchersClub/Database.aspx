@@ -4,14 +4,34 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Populate Database Tables</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-    </div>
+    </br>
     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Reset Database" />
+    <h1><asp:Label ID="Label1" runat="server" Text=""></asp:Label></h1>
+    </div>
+    </br>
+    <div>
+    <h1><asp:Label ID="Label2" runat="server" Text="Bird Table"></asp:Label></h1>
+    <asp:Table ID="tblBird" runat="server" BorderStyle="Solid" CellPadding="5" 
+            CellSpacing="5" GridLines="Both"></asp:Table>
+    </div>
+    <div>
+    <h1><asp:Label ID="Label3" runat="server" Text="Member Table"></asp:Label></h1>
+    <asp:Table ID="tblMember" runat="server" BorderStyle="Solid" CellPadding="5" 
+            CellSpacing="5" GridLines="Both"></asp:Table>
+    </div>
+    <div>
+    <h1><asp:Label ID="Label4" runat="server" Text="Bird Member Table"></asp:Label></h1>
+    <asp:Table ID="tblBirdMember" runat="server" BorderStyle="Solid" CellPadding="5" 
+            CellSpacing="5" GridLines="Both"></asp:Table>
+    </div>
+    <h1><asp:Label ID="Label5" runat="server" Text="Bird Sightings"></asp:Label></h1>
+    <asp:Table ID="tblTestQuery" runat="server" CellPadding="5" CellSpacing="5" 
+        GridLines="Both"></asp:Table>
     </form>
 </body>
 </html>
