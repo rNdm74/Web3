@@ -4,7 +4,7 @@
 body   
 {
     background: #b6b7bc;
-    font-size: .80em;
+    font-size: 1.80em;
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
@@ -32,10 +32,6 @@ p
     margin-bottom: 10px;
     line-height: 1.6em;
 }
-
-
-/* HEADINGS   
-----------------------------------------------------------*/
 
 h1, h2, h3, h4, h5, h6
 {
@@ -76,7 +72,7 @@ h5, h6
 }
 
 /* this rule styles <h1> and <h2> tags that are the 
-first child of the left and right table columns */
+first child of the left and right table columns
 .rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
 {
     margin-top: 0px;
@@ -84,7 +80,7 @@ first child of the left and right table columns */
 
 
 /* PRIMARY LAYOUT ELEMENTS   
-----------------------------------------------------------*/
+----------------------------------------------------------
 
 .page
 {
@@ -139,8 +135,7 @@ first child of the left and right table columns */
 }
 
 
-/* TAB MENU   
-----------------------------------------------------------*/
+
 
 div.hideSkiplink
 {
@@ -187,8 +182,8 @@ div.menu ul li a:active
     text-decoration: none;
 }
 
-/* FORM ELEMENTS   
-----------------------------------------------------------*/
+ FORM ELEMENTS   
+----------------------------------------------------------
 
 fieldset
 {
@@ -236,8 +231,8 @@ div.accountInfo
     width: 42%;
 }
 
-/* MISC  
-----------------------------------------------------------*/
+ MISC  
+----------------------------------------------------------
 
 .clear
 {
@@ -291,4 +286,81 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+
+*/
+
+.navbar
+{
+    z-index: 0;
+    display: block;
+    position:fixed;
+    top: 200px;
+    width: 200px;
+    height:100%;
+    background-color:#F7F6F3;
+    padding-top: 1px;
+    border-top: 1px ButtonFace solid;
+}
+
+.content
+{
+    z-index: 1;
+    display: block;
+    position:fixed;
+    left: 200px;
+    top: 0px;
+    right: 0px;
+    /*width: 100%;*/
+    height: 100%;
+    padding: 50px;
+    background-color:InfoBackground;
+    /*-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);*/
+    border-top: 1px ButtonFace solid;
+    border-left: 1px ButtonFace solid;
+}
+
+.table
+{
+    display: block;
+    position:absolute;
+    left: 0px;
+    right: 0px;
+    margin-top: 25px;
+    /*padding-left: 50px;*/
+}
+
+.panel
+{
+    /*-webkit-box-shadow: inset 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    inset 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         inset 0px 0px 5px 0px rgba(50, 50, 50, 0.75);*/
+    border: 1px ButtonFace solid; 
+    padding-left: 50px;
+}
+
+.button
+{
+    position:relative;
+    float: right; 
+    margin-top: 0px;    
+}
+
+.header
+{
+    display: block;
+    position:fixed;
+    left: 0px;
+    width: 100%;
+    height:0px;
+    background-color:White;
+}
+
+.add
+{
+    float: left;
+    margin-left: 50px;
+    height: 400px;
 }
