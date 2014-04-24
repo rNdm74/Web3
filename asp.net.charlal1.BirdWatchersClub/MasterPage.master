@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
     <div class="header">
-    <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Images/bird.jpg" 
+    <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Images/bird_watcher.jpg" 
             Width="200px" />
     </div>
     <div class="navbar">
@@ -29,9 +29,12 @@
         <Items>
             <asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Home.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Sightings" Value="Sightings" NavigateUrl="~/Sightings.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Birds" Value="Birds" NavigateUrl="~/Birds.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Add Sighting" Value="Add Sighting" NavigateUrl="~/AddSighting.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Birds" Value="Birds" NavigateUrl="~/Birds.aspx"></asp:MenuItem>            
             <asp:MenuItem Text="Members" Value="Members" NavigateUrl="~/Members.aspx"></asp:MenuItem>
+            
+            <asp:MenuItem Text="Add Sighting" Value="Add Sighting" NavigateUrl="~/AddSighting.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Add Bird" Value="Add Bird" NavigateUrl="~/AddBird.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Add Member" Value="Add Member" NavigateUrl="~/AddMember.aspx"></asp:MenuItem>
         </Items>
         <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" Width="200px" />
         <StaticMenuItemStyle HorizontalPadding="15px" VerticalPadding="12px" />

@@ -36,32 +36,7 @@
                 CssClass="button" ForeColor="#696969" BorderStyle="None" BorderWidth="0" BorderColor="White" BackColor="White" /></p>
                 
                                    
-            </div>
-            <div class="add">
-                <h3>Add New Bird</h3>
-                <hr />
-                <asp:Label ID="Label1" runat="server" Text="English"></asp:Label><br />
-                <asp:TextBox ID="TextBox1" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
-                <asp:Label ID="Label2" runat="server" Text="Maori"></asp:Label><br />
-                <asp:TextBox ID="TextBox2" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
-                <asp:Label ID="Label3" runat="server" Text="Scientific"></asp:Label><br />
-                <asp:TextBox ID="TextBox3" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
-                <p><asp:Button ID="Button2" runat="server" Text="+ Add Bird" Font-Size="XX-Large" 
-                CssClass="button" ForeColor="#696969" BorderStyle="None" BorderWidth="0" BorderColor="White" BackColor="White"  /></p>
-                
-            </div>
-            <div class="add">
-                <h3>Add New Member</h3>
-                <hr />
-                <asp:Label ID="Label4" runat="server" Text="Firstname"></asp:Label><br />
-                <asp:TextBox ID="TextBox4" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
-                <asp:Label ID="Label5" runat="server" Text="Lastname"></asp:Label><br />
-                <asp:TextBox ID="TextBox5" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
-                <asp:Label ID="Label6" runat="server" Text="Suburb"></asp:Label><br />
-                <asp:TextBox ID="TextBox6" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
-                <p><asp:Button ID="Button4" runat="server" Text="+ Add Member" Font-Size="XX-Large" 
-                CssClass="button" ForeColor="#696969" BorderStyle="None" BorderWidth="0" BorderColor="White" BackColor="White"  /></p> 
-            </div>
+            </div>            
         </asp:Panel>
     </div>
     
