@@ -3,13 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1>Add Bird Sighting&nbsp;<asp:Label ID="lbResult" runat="server" Text=""></asp:Label></h1>
-    <hr />
+    
     <div class="table">
-        <asp:Panel ID="Pan1" Height="800px" Width="110%" BackColor="White" 
+        <asp:Panel ID="Pan1" BackColor="White" 
             ScrollBars="Auto" runat="server" HorizontalAlign="Justify" CssClass="panel">
+            <h1>Add Bird Sighting&nbsp;<asp:Label ID="lbResult" runat="server" Text=""></asp:Label></h1>
+            <hr />
             <div class="add">
-                <%--<h3>Add Bird Sighting</h3> <hr />--%>
                 <asp:Label ID="Label8" runat="server" Text="Member Sighted"></asp:Label><br />
                 <asp:DropDownList ID="ddlMember" runat="server" 
                     DataSourceID="sqlMemberName" DataTextField="first" DataValueField="memberID" 

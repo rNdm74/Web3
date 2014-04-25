@@ -3,16 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<h1>Add Bird&nbsp;<asp:Label ID="lResult" runat="server" Text=""></asp:Label></h1>
-    <hr />
+    
     <div class="table">
-        <asp:Panel ID="Pan1" Height="800px" Width="110%" BackColor="White" 
+        <asp:Panel ID="Pan1" BackColor="White" 
             ScrollBars="Auto" runat="server" HorizontalAlign="Justify" CssClass="panel">
-            
-            <div class="add">
-                <%--<h3>Add New Bird</h3>
-                
-                <hr />--%>
+            <h1>Add Bird&nbsp;<asp:Label ID="lResult" runat="server" Text=""></asp:Label></h1>
+            <hr />
+            <div class="add">                
                 <asp:Label ID="Label1" runat="server" Text="English"></asp:Label><br />
                 <asp:TextBox ID="tbEnglishName" runat="server" Font-Size="XX-Large"></asp:TextBox><br />
                 <asp:Label ID="Label2" runat="server" Text="Maori"></asp:Label><br />
