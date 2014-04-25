@@ -3,37 +3,40 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1>Add Bird Sighting</h1>
+    <h1>Add Bird Sighting&nbsp;<asp:Label ID="lbResult" runat="server" Text=""></asp:Label></h1>
     <hr />
     <div class="table">
         <asp:Panel ID="Pan1" Height="800px" Width="110%" BackColor="White" 
             ScrollBars="Auto" runat="server" HorizontalAlign="Justify" CssClass="panel">
             <div class="add">
-                <h3>Add Bird Sighting</h3> <hr />
+                <%--<h3>Add Bird Sighting</h3> <hr />--%>
                 <asp:Label ID="Label8" runat="server" Text="Member Sighted"></asp:Label><br />
-                <asp:DropDownList ID="DropDownList1" runat="server" 
-                    DataSourceID="sqlMemberName" DataTextField="first" DataValueField="first" 
-                    Font-Size="XX-Large" Height="43px" Width="100%" ForeColor="#696969">
+                <asp:DropDownList ID="ddlMember" runat="server" 
+                    DataSourceID="sqlMemberName" DataTextField="first" DataValueField="memberID" 
+                    Font-Size="XX-Large" Height="43px" Width="100%" ForeColor="DimGray">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="sqlMemberName" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:IN712_201401_CHARLAL1Connection %>" 
-                    SelectCommand="SELECT [first],[last] FROM [tblMember]"></asp:SqlDataSource>
+                    SelectCommand="SELECT [first], [last], [memberID] FROM [tblMember]"></asp:SqlDataSource>
                 <br />
                    
                 <asp:Label ID="Label7" runat="server" Text="Bird Sighted"></asp:Label><br />
-                <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="sqlBirdName" 
-                    DataTextField="englishName" DataValueField="englishName" 
-                    Font-Size="XX-Large" Height="43px" Width="100%" ForeColor="#696969">
+                <asp:DropDownList ID="ddlBird" runat="server" DataSourceID="sqlBirdName" 
+                    DataTextField="englishName" DataValueField="birdID" 
+                    Font-Size="XX-Large" Height="43px" Width="100%" ForeColor="DimGray">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="sqlBirdName" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:IN712_201401_CHARLAL1Connection %>" 
-                    SelectCommand="SELECT [englishName] FROM [tblBird]"></asp:SqlDataSource>
+                    
+                    SelectCommand="SELECT [englishName], [birdID], [maoriName], [scientificName] FROM [tblBird]"></asp:SqlDataSource>
                 
                 <br />
                 <br />
                 <br />
-                <p><asp:Button ID="Button1" runat="server" Text="+ Add Sighting" Font-Size="XX-Large" 
-                CssClass="button" ForeColor="#696969" BorderStyle="None" BorderWidth="0" BorderColor="White" BackColor="White" /></p>
+                <p><asp:Button ID="Button1" runat="server" style="cursor:pointer;" 
+                        Text="+ Add Sighting" Font-Size="XX-Large" 
+                CssClass="button" ForeColor="#696969" BorderStyle="None" BorderWidth="0" 
+                        BorderColor="White" BackColor="White" onclick="Button1_Click" /></p>
                 
                                    
             </div>            

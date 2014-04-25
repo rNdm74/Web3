@@ -10,9 +10,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    <div class="logo">
+    <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Images/bird.jpg" />
+    </div>
     <div class="header">
-    <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Images/bird_watcher.jpg" 
-            Width="200px" />
+    <asp:Image ID="Image2" runat="server" Height="200px" ImageUrl="~/Images/blog.png" />
+    
     </div>
     <div class="navbar">
     
@@ -36,9 +39,9 @@
             <asp:MenuItem Text="Add Bird" Value="Add Bird" NavigateUrl="~/AddBird.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Add Member" Value="Add Member" NavigateUrl="~/AddMember.aspx"></asp:MenuItem>
         </Items>
-        <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" Width="200px" />
-        <StaticMenuItemStyle HorizontalPadding="15px" VerticalPadding="12px" />
-        <StaticMenuStyle Width="200px" />
+        <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" Width="178px" />
+        <StaticMenuItemStyle HorizontalPadding="12px" VerticalPadding="12px" />
+        <StaticMenuStyle Width="178px" />
         <StaticSelectedStyle BackColor="#5D7B9D" />
     </asp:Menu>
     </div>
@@ -47,5 +50,6 @@
     </div>
     
     </form>
+    
 </body>
 </html>

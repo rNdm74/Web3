@@ -28,7 +28,7 @@ public class DatabaseManager
 		//
 	}
 
-    public String GenerateTable(String query, Table table)
+    public String GenerateTableHeader(String query, Table table)
     {
         try
         {
@@ -39,9 +39,34 @@ public class DatabaseManager
             SqlCommand createTableQuery = new SqlCommand(query, bitdevConnection);
 
             CreateTableHeader(createTableQuery, table);
-            CreateTableBody(createTableQuery, table);
+            //CreateTableBody(createTableQuery, table);
 
             return "";
+        }
+        catch (Exception e)
+        {
+            return "Error: " + e;
+        }
+        finally
+        {
+            bitdevConnection.Close();
+        }
+    }
+
+    public String GenerateTable(String query, Table table)
+    {
+        try
+        {
+            bitdevConnection = new SqlConnection();
+            bitdevConnection.ConnectionString = CONNECTION_STRING;
+            bitdevConnection.Open();
+
+            SqlCommand createTableQuery = new SqlCommand(query, bitdevConnection);
+
+            //CreateTableHeader(createTableQuery, table);
+
+
+            return "Results found: " + CreateTableBody(createTableQuery, table);
         }
         catch (Exception e)
         {
@@ -59,8 +84,10 @@ public class DatabaseManager
         {
             reader = createTable.ExecuteReader();
             reader.Read();
-
-            table.Controls.Add(CreateTableRow(reader, Data.NAME));
+                        
+            TableRow header = CreateTableRow(reader, Data.NAME);
+            
+            table.Controls.Add(header);
 
             return "";
         }
@@ -126,14 +153,17 @@ public class DatabaseManager
     {
         try
         {
+            int count = 0;
+
             reader = createTable.ExecuteReader();
 
             while (reader.Read())
             {
                 table.Controls.Add(CreateTableRow(reader, Data.VALUE));
+                count++;
             }
 
-            return "";
+            return count.ToString();
         }
         catch (Exception e)
         {
@@ -214,8 +244,18 @@ public class DatabaseManager
         }
     }
 
-    public bool TableExists(String tableName) 
+    public void InsertMemberRecord(string last, string first, string suburb)
     {
-        return true;
+        InsertRecord("INSERT INTO tblMember VALUES( '" + last + "','" + first + "','" + suburb + "' )");
+    }
+
+    public void InsertBirdRecord(string maoriName, string englishName, string scientificName)
+    {
+        InsertRecord("INSERT INTO tblBird VALUES( '" + maoriName + "','" + englishName + "','" + scientificName + "' )");
+    }
+
+    public void InsertBirdMemberRecord(int birdID, int memberID)
+    {
+        InsertRecord("INSERT INTO tblBirdMember VALUES( '" + birdID + "','" + memberID + "' )");
     }
 }

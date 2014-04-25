@@ -11,4 +11,15 @@ public partial class AddSighting : System.Web.UI.Page
     {
 
     }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        DatabaseManager dbManager = new DatabaseManager();
+
+        int memberID = Convert.ToInt16(ddlMember.SelectedValue);
+        int birdID = Convert.ToInt16(ddlBird.SelectedValue);
+
+        dbManager.InsertBirdMemberRecord(birdID, memberID);
+
+        lbResult.Text = "Sighting added to database";
+    }
 }

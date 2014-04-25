@@ -11,6 +11,7 @@ public partial class Sightings : System.Web.UI.Page
     {
         DatabaseManager dbManager = new DatabaseManager();
         String sightingsQuery = "SELECT tblBird.englishName AS English, tblBird.maoriName AS Maori, tblMember.first AS Firstname, tblMember.last AS Lastname FROM tblBird INNER JOIN tblBirdMember ON tblBird.birdID = tblBirdMember.birdID INNER JOIN tblMember ON tblBirdMember.memberID = tblMember.memberID";
-        dbManager.GenerateTable(sightingsQuery, tblSightings);
+        //dbManager.GenerateTableHeader(sightingsQuery, tblSightingsHeader);
+        lRowCount.Text = dbManager.GenerateTable(sightingsQuery, tblSightingsBody);
     }
 }
