@@ -3,8 +3,8 @@
 
 body   
 {
-    background: #White;
-    font-size: 1.80em;
+    background: White;
+    font-size: 1.50em;
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
@@ -55,11 +55,13 @@ h2
 {
     font-size: 1.5em;
     font-weight: 600;
+    
 }
 
 h3
 {
     font-size: 1.2em;
+    text-indent: 50px;
 }
 
 h4
@@ -80,10 +82,11 @@ h5, h6
     top: 200px;
     width: 200px;
     height:100%;
-    background-color:#F7F6F3;
+    
     padding-top: 1px;
     border-top: 1px ButtonFace solid;
     border-right: 1px ButtonFace solid;
+    background-color:#F7F6F3;
 }
 
 .content
@@ -94,8 +97,8 @@ h5, h6
     left: 200px;
     top: 200px;
     right: 0px;
-    bottom: 100px;
-    padding: 0px;
+    bottom: 0px;
+    
     background-color:White;
     border-top: 1px ButtonFace solid;
 }
@@ -105,20 +108,18 @@ h5, h6
     display: block;
     position:absolute;
     
+    top: 0px;
     left: 0px;
     right: 0px;
-    bottom: 0px;
-    margin-top: 25px;
-    height: 100%;
-    padding-left: 50px;
+    bottom: 100px;
+    padding-left: 0px;
+    
 }
 
 .tableHeader
 {
-    z-index: 2;
-    display: block;
-    position:static;
-    background-color:White;
+    
+    font-weight:bold;
 }
 
 .button
@@ -130,9 +131,16 @@ h5, h6
 
 .add
 {
+    
+    display:block;
     float: left;
+    /*margin-left: auto;
+    margin-right: auto;*/
     margin-left: 50px;
+    width: 450px;
     height: 400px;
+    
+    margin-bottom: 100px;    
 }
 
 .logo
@@ -158,6 +166,7 @@ h5, h6
 .panel
 {
     height: 100%;
+    padding-right: 0px;
 }
 
 .footer
@@ -171,10 +180,11 @@ h5, h6
     bottom: 0px;
     
     height: 100px;
-    background-color: ActiveBorder;
+    background-color: White;
     border-top: 1px ButtonFace solid;
     
     
     text-align:center;
     text-shadow: rgb(224, 224, 224) 1px 1px 0px;
 }
+

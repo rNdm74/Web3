@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 /// <summary>
 /// Summary description for DatabaseManager
@@ -27,6 +28,61 @@ public class DatabaseManager
 		// TODO: Add constructor logic here
 		//
 	}
+
+    public DataSet GetData(String queryString)
+    {
+
+        // Retrieve the connection string stored in the Web.config file.
+        String connectionString = CONNECTION_STRING;
+
+        DataSet ds = new DataSet();
+
+        try
+        {
+            // Connect to the database and run the query.
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
+
+            // Fill the DataSet.
+            adapter.Fill(ds);
+
+        }
+        catch (Exception ex)
+        {
+
+            // The connection failed. Display an error message.
+            //Message.Text = "Unable to connect to the database.";
+
+        }
+
+        return ds;
+
+    }
+
+    public DataSet TableDataSet(String query, String tableName) 
+    {
+        try
+        {
+            bitdevConnection = new SqlConnection();
+            bitdevConnection.ConnectionString = CONNECTION_STRING;
+            bitdevConnection.Open();
+
+            DataSet dataSet = new DataSet();
+            SqlCommand command = new SqlCommand(query, bitdevConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(dataSet, tableName);
+            
+            return dataSet;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+        finally
+        { 
+            bitdevConnection.Close();
+        }
+    }
 
     public String GenerateTableHeader(String query, Table table)
     {
@@ -63,7 +119,7 @@ public class DatabaseManager
 
             SqlCommand createTableQuery = new SqlCommand(query, bitdevConnection);
 
-            //CreateTableHeader(createTableQuery, table);
+            CreateTableHeader(createTableQuery, table);
 
 
             return "Results found: " + CreateTableBody(createTableQuery, table);
@@ -85,8 +141,9 @@ public class DatabaseManager
             reader = createTable.ExecuteReader();
             reader.Read();
                         
-            TableRow header = CreateTableRow(reader, Data.NAME);
-            
+            TableHeaderRow header = CreateTableHeaderRow(reader, Data.NAME);
+            header.TableSection = TableRowSection.TableHeader;
+            header.CssClass = "tableHeader";
             table.Controls.Add(header);
 
             return "";
@@ -106,6 +163,36 @@ public class DatabaseManager
         int fieldCount = reader.FieldCount;
 
         TableRow currentRow = new TableRow();
+
+        for (int f = 0; f < fieldCount; f++)
+        {
+            // Grab the field name and value
+            String currentField = reader.GetName(f);
+            String currentValue = reader.GetValue(f).ToString();
+
+            TableCell currentCell = null;
+
+            switch (dataType)
+            {
+                case Data.NAME:
+                    currentCell = CreateTableCell(currentField);
+                    break;
+                case Data.VALUE:
+                    currentCell = CreateTableCell(currentValue);
+                    break;
+            }
+
+            currentRow.Controls.Add(currentCell);
+        }
+
+        return currentRow;
+    }
+
+    private TableHeaderRow CreateTableHeaderRow(SqlDataReader reader, Data dataType)
+    {
+        int fieldCount = reader.FieldCount;
+
+        TableHeaderRow currentRow = new TableHeaderRow();
 
         for (int f = 0; f < fieldCount; f++)
         {
