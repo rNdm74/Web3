@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp.net.charlal1.IN712.MVC.Intro", "asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.csproj", "{593FE288-CCC7-4CFA-A571-FA0C647F8E59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asp.net.charlal1.IN712.MVC.Intro.Tests", "asp.net.charlal1.IN712.MVC.Intro.Tests\asp.net.charlal1.IN712.MVC.Intro.Tests.csproj", "{A51F962A-3DF2-4D41-97F5-85C416FBBD9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{593FE288-CCC7-4CFA-A571-FA0C647F8E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593FE288-CCC7-4CFA-A571-FA0C647F8E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593FE288-CCC7-4CFA-A571-FA0C647F8E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593FE288-CCC7-4CFA-A571-FA0C647F8E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A51F962A-3DF2-4D41-97F5-85C416FBBD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51F962A-3DF2-4D41-97F5-85C416FBBD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51F962A-3DF2-4D41-97F5-85C416FBBD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51F962A-3DF2-4D41-97F5-85C416FBBD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

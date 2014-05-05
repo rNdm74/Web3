@@ -1,0 +1,8 @@
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\bin\Debug\asp.net.charlal1.IN712.MVC.Intro.Tests.dll.config
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\bin\Debug\asp.net.charlal1.IN712.MVC.Intro.Tests.dll
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\bin\Debug\asp.net.charlal1.IN712.MVC.Intro.Tests.pdb
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\bin\Debug\asp.net.charlal1.IN712.MVC.Intro.dll
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\bin\Debug\asp.net.charlal1.IN712.MVC.Intro.pdb
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\obj\Debug\asp.net.charlal1.IN712.MVC.Intro.Tests.csprojResolveAssemblyReference.cache
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\obj\Debug\asp.net.charlal1.IN712.MVC.Intro.Tests.dll
+V:\Web3\asp.net.charlal1.IN712.MVC.Intro\asp.net.charlal1.IN712.MVC.Intro.Tests\obj\Debug\asp.net.charlal1.IN712.MVC.Intro.Tests.pdb
