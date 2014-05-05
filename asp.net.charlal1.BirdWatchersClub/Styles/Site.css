@@ -3,7 +3,7 @@
 
 body   
 {
-    background: White;
+    background: #EDECDA;
     font-size: 1.50em;
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
@@ -49,13 +49,14 @@ h1
     padding-bottom: 0px;
     margin-bottom: 0px;
     text-indent: 50px;
+    text-shadow: rgb(224, 224, 224) 1px 1px 0px;
 }
 
 h2
 {
     font-size: 1.5em;
     font-weight: 600;
-    
+    text-shadow: rgb(224, 224, 224) 1px 1px 0px;
 }
 
 h3
@@ -76,17 +77,21 @@ h5, h6
 
 .navbar
 {
-    z-index: 1;
+    z-index: 0;
     display: block;
     position:fixed;
-    top: 200px;
-    width: 200px;
-    height:100%;
+    top: 0px;
+    left: 500px;
+    width: 700px;
+    height:100px;
     
-    padding-top: 1px;
+    padding-left: 15px;
+    padding-top: 15px;
     border-top: 1px ButtonFace solid;
-    border-right: 1px ButtonFace solid;
-    background-color:#F7F6F3;
+}
+
+* {
+    outline: none;
 }
 
 .content
@@ -94,12 +99,12 @@ h5, h6
     z-index: 0;
     display: block;
     position:fixed;
-    left: 200px;
-    top: 200px;
+    left: 0px;
+    top: 100px;
     right: 0px;
     bottom: 0px;
     
-    background-color:White;
+    background-color:#F6F5EB;
     border-top: 1px ButtonFace solid;
 }
 
@@ -126,12 +131,16 @@ h5, h6
 {
     position:relative;
     float: right; 
-    margin-top: 0px;    
+    margin-top: 0px;   
+    
+    text-shadow: rgb(224, 224, 224) 1px 1px 0px; 
+    
+    outline: none;
 }
 
 .add
 {
-    
+    z-index: 0;
     display:block;
     float: left;
     /*margin-left: auto;
@@ -145,22 +154,25 @@ h5, h6
 
 .logo
 {    
-    z-index: 9;
+    z-index: 2;
     display:block;
     position:absolute;
     
-    bottom: 100px;
-    right: 50px;
-    /*left: 25px;    
-    bottom: 25px;*/
+    
+    
+    bottom: 0px;
+    right: 0px;
+    
 }
 
 .header
 {
     display:block;
     position:absolute;
-    left: -60px;
-    top: 0px;
+    left: 0px;
+    right: 0px;
+    top: -10px;
+    
 }
 
 .panel
@@ -180,7 +192,7 @@ h5, h6
     bottom: 0px;
     
     height: 100px;
-    background-color: White;
+    background-color: #EDECDA;
     border-top: 1px ButtonFace solid;
     
     

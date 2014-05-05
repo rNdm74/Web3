@@ -10,7 +10,8 @@
     <form id="form1" runat="server">
     <div>
     </br>
-    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Reset Database" />
+        <asp:Button ID="Button2" runat="server" Text="Homepage" 
+            onclick="Button2_Click" /><asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Reset Database" />
     <h1><asp:Label ID="Label1" runat="server" Text=""></asp:Label></h1>
     </div>
     </br>

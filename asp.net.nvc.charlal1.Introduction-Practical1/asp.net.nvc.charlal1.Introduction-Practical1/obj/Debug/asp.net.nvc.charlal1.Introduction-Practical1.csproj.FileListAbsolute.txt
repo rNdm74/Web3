@@ -1,0 +1,6 @@
+E:\Work\Web3\asp.net.nvc.charlal1.Introduction-Practical1\asp.net.nvc.charlal1.Introduction-Practical1\bin\asp.net.nvc.charlal1.Introduction-Practical1.dll
+E:\Work\Web3\asp.net.nvc.charlal1.Introduction-Practical1\asp.net.nvc.charlal1.Introduction-Practical1\bin\asp.net.nvc.charlal1.Introduction-Practical1.pdb
+E:\Work\Web3\asp.net.nvc.charlal1.Introduction-Practical1\asp.net.nvc.charlal1.Introduction-Practical1\bin\EntityFramework.dll
+E:\Work\Web3\asp.net.nvc.charlal1.Introduction-Practical1\asp.net.nvc.charlal1.Introduction-Practical1\bin\EntityFramework.xml
+E:\Work\Web3\asp.net.nvc.charlal1.Introduction-Practical1\asp.net.nvc.charlal1.Introduction-Practical1\obj\Debug\asp.net.nvc.charlal1.Introduction-Practical1.dll
+E:\Work\Web3\asp.net.nvc.charlal1.Introduction-Practical1\asp.net.nvc.charlal1.Introduction-Practical1\obj\Debug\asp.net.nvc.charlal1.Introduction-Practical1.pdb

@@ -95,7 +95,6 @@ public class DatabaseManager
             SqlCommand createTableQuery = new SqlCommand(query, bitdevConnection);
 
             CreateTableHeader(createTableQuery, table);
-            //CreateTableBody(createTableQuery, table);
 
             return "";
         }
@@ -157,7 +156,7 @@ public class DatabaseManager
             reader.Close();
         }
     }
-
+        
     private TableRow CreateTableRow(SqlDataReader reader, Data dataType) 
     {
         int fieldCount = reader.FieldCount;
@@ -172,6 +171,7 @@ public class DatabaseManager
 
             TableCell currentCell = null;
 
+            // Populates the cell with either the field of value
             switch (dataType)
             {
                 case Data.NAME:
@@ -244,8 +244,10 @@ public class DatabaseManager
 
             reader = createTable.ExecuteReader();
 
+            // While there is something to read
             while (reader.Read())
             {
+                // Creates a table row
                 table.Controls.Add(CreateTableRow(reader, Data.VALUE));
                 count++;
             }
@@ -262,6 +264,7 @@ public class DatabaseManager
         }
     }
 
+    // Used for creating a table in the datebase
     public String CreateTable(String createTableQuery)
     {        
         try
@@ -285,6 +288,7 @@ public class DatabaseManager
         }        
     }
 
+    // Removes a table from the database
     public String DeleteTable(String tableName)
     {
         try
@@ -308,6 +312,7 @@ public class DatabaseManager
         } 
     }
 
+    // Inserts a record into a database table
     public String InsertRecord(String query) 
     {
         try
@@ -331,6 +336,7 @@ public class DatabaseManager
         }
     }
 
+    // Methods for adding records the to specific database tables
     public void InsertMemberRecord(string last, string first, string suburb)
     {
         InsertRecord("INSERT INTO tblMember VALUES( '" + last + "','" + first + "','" + suburb + "' )");

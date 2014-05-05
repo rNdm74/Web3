@@ -10,47 +10,42 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
-    <%--<div class="logo">
-        <asp:Image ID="Image1" runat="server" Width="200px" ImageUrl="~/Images/bird_speech.jpg" />
-    </div>--%>
+     
     <div class="header">
-        <asp:Image ID="Image2" runat="server" Height="200px" ImageUrl="~/Images/blog.png" />    
-    </div>
-    
-
-    <div class="navbar">    
-        <asp:Menu ID="Menu1" runat="server" BackColor="#F7F6F3" 
-            DynamicHorizontalOffset="2" Font-Names="Segoe UI" Font-Size="1.2em"
-            ForeColor="#5D7B9D" StaticSubMenuIndent="10px" Width="200px">        
-            <DynamicHoverStyle BackColor="#5D7B9D" ForeColor="White" />
-            <DynamicMenuItemStyle HorizontalPadding="15px" VerticalPadding="12px" />
-            <%--<DynamicMenuStyle BackColor="#F7F6F3" />--%>
-            <DynamicMenuStyle BackColor="#FFFFFF" />
-            <DynamicSelectedStyle BackColor="#5D7B9D" />
+        <asp:Image ID="Image2" Height="115px"   runat="server" ImageUrl="~/Images/banner.png" />  
+        </div>  
+        <div class="navbar">
+        <asp:Menu ID="Menu1" runat="server" BackColor="transparent" 
+            DynamicHorizontalOffset="1" Font-Names="Segoe UI" Font-Size="1.2em"
+            ForeColor="#5D7B9D" StaticSubMenuIndent="0px" Width="700px" 
+            Orientation="Horizontal" EnableViewState="False" CssClass="navItems" 
+                Height="98px">        
+            <DynamicHoverStyle BackColor="#EDECDA" ForeColor="White" />
+            <DynamicMenuItemStyle HorizontalPadding="12px" VerticalPadding="12px" 
+                CssClass="navItems" />
+            <DynamicMenuStyle BackColor="#EDECDA" />
+            <DynamicSelectedStyle BackColor="#EDECDA" />
             <DynamicItemTemplate>
             <%# Eval("Text") %>
             </DynamicItemTemplate>
             <Items>
-                <asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Home.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Sightings" Value="Sightings" NavigateUrl="~/Sightings.aspx"></asp:MenuItem>
-                <%--<asp:MenuItem Text="Birds" Value="Birds" NavigateUrl="~/Birds.aspx"></asp:MenuItem>            
-                <asp:MenuItem Text="Members" Value="Members" NavigateUrl="~/Members.aspx"></asp:MenuItem>--%>            
+                <asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Default.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Information" Value="Information" NavigateUrl="~/Sightings.aspx"></asp:MenuItem>      
                 <asp:MenuItem Text="Add Sighting" Value="Add Sighting" NavigateUrl="~/AddSighting.aspx"></asp:MenuItem>
-                <%--<asp:MenuItem Text="Add Bird" Value="Add Bird" NavigateUrl="~/AddBird.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Add Member" Value="Add Member" NavigateUrl="~/AddMember.aspx"></asp:MenuItem>--%>
             </Items>
-            <StaticHoverStyle BackColor="#5D7B9D" ForeColor="White" Width="178px" />
-            <StaticMenuItemStyle HorizontalPadding="12px" VerticalPadding="12px" />
-            <StaticMenuStyle Width="178px" />
+            <StaticHoverStyle ForeColor="White"  
+                CssClass="navItems" />
+            <StaticMenuItemStyle HorizontalPadding="12px" VerticalPadding="12px" 
+                CssClass="navItems" Font-Underline="False" ForeColor="#68BCAC" 
+                 />
+            <StaticMenuStyle />
             <StaticSelectedStyle BackColor="#5D7B9D" />
         </asp:Menu>
+       
     </div>
     <div class="content">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-    </div>
-
-    
+    </div>   
     
     </form>    
 </body>
