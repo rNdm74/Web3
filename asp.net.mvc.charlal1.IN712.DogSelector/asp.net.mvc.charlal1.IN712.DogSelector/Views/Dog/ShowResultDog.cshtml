@@ -4,4 +4,83 @@
     ViewBag.Title = "ShowResultDog";
 }
 
-<h2>ShowResultDog</h2>
+<style>
+.container
+{
+    width: 1000px;
+}
+
+.left
+{
+    float: left;
+}
+
+.right
+{
+    float: right;
+}
+
+table
+{
+border-collapse:collapse;
+}
+table, th, td
+{
+border: 1px solid black;
+padding: 1em;
+
+}
+td {
+    text-align: center; /* center checkbox horizontally */
+    vertical-align: middle; /* center checkbox vertically */
+}
+</style>
+
+
+<fieldset>
+        <legend> We suggest the @Model.DisplayName </legend>
+        <br />
+        <div class="container">
+            <div class="left">
+                <img src="/Content/DogImages/@Model.ImageName" alt="@Model.ImageName"/>
+            </div>
+            <div class="right">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Activity Level</td>
+                            <td>@Model.ActivityLevel</td>
+                        </tr>
+                        <tr>
+                            <td>Shedding Level</td>
+                            <td>@Model.SheddingLevel</td>
+                        </tr>
+                        <tr>
+                            <td>Grooming Level</td>
+                            <td>@Model.GroomingLevel</td>
+                        </tr>
+                        <tr>
+                            <td>Intelligence Level</td>
+                            <td>@Model.IntelligenceLevel</td>
+                        </tr>
+                        <tr>
+                            <td>Good With Children</td>
+                            <td>@Model.GoodWithChildren</td>
+                        </tr>
+                        <tr>
+                            <td>Drools</td>
+                            <td>@Model.Drools</td>
+                        </tr>
+                        <tr>
+                            <td>Coat Length</td>
+                            <td>@Model.Coatlength</td>
+                        </tr>
+                        <tr>
+                            <td>Size</td>
+                            <td>@Model.Size</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</fieldset>
