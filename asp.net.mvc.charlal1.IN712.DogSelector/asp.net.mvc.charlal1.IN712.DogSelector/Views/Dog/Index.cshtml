@@ -1,0 +1,17 @@
+﻿@model asp.net.mvc.charlal1.IN712.DogSelector.Models.Dog
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p><a href='@Url.Content("~/Dog/ChooseDogForm")'>Home</a></p>
+
+
+@using (Html.BeginForm("DogForm", "Dog", FormMethod.Post)) 
+{
+    <fieldset>
+        <legend> Doggie Details: </legend>
+        @Html.Label("Must be good with children:");
+
+    </fieldset>
+}
