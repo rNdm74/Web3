@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home</h2>
+
+<p></p>
+<p><a href='@Url.Content("~/Horse")'>Horse</a></p>
+<br />
+<hr />
+<label id="lBettingPool">Betting Pool:</label>
+<label id="lAvailablePool">$100</label>
+<hr />
+<label id="lName">Enter your name:</label>
+<input id="tName" type="text" />&nbsp <a href='@Url.Content("~/Player")'>Not Registered</a>
+<hr />
+<label id="lPlaceBet">Place your bet:</label>
+<input id="tBet" type="text" />
+<hr />
+<label id="lNoHorses">How many horses are you betting on?</label>
+<input id="tHorses" type="text" />
+<hr />
+<input id="bSimulateRace" type="button" value="Simulate Race" />

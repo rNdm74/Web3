@@ -1,0 +1,30 @@
+﻿@model asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Horse
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Horse</legend>
+
+    <div class="display-label">Form</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Form)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">FinishingPlace</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FinishingPlace)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.HorseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

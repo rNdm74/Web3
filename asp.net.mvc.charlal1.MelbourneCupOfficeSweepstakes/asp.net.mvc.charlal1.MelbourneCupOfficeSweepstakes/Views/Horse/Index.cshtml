@@ -1,0 +1,45 @@
+﻿@model IEnumerable<asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Horse>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Form
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            FinishingPlace
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinishingPlace)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HorseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HorseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HorseID })
+        </td>
+    </tr>
+}
+
+</table>
