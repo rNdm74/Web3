@@ -48,7 +48,7 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
             {
                 db.Players.Add(player);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Create","Bet", player);  
             }
 
             return View(player);

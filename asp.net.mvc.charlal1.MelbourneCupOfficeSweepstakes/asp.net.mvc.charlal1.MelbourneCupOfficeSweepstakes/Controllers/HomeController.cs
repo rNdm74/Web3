@@ -21,7 +21,12 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
 
         //
         // POST: /Player/Create
+        public ActionResult Result(Bet bet, Player player)
+        {
+            ViewBag.Race = player.Name;
 
+            return View();
+        }
         
 
     }

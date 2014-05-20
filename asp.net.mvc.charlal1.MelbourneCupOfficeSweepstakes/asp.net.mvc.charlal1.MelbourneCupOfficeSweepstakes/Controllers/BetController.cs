@@ -33,7 +33,7 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         //
         // GET: /Bet/Create
 
-        public ActionResult Create()
+        public ActionResult Create(Player player)
         {
             var Horses = new List<Horse> 
             {
@@ -55,8 +55,8 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
             {
                 //db.Horses.Add(h);
             }
-                
 
+            ViewBag.test = player.Name;
             //db.SaveChanges();
 
             return View();
@@ -66,13 +66,29 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         // POST: /Bet/Create
 
         [HttpPost]
-        public ActionResult Create(Bet bet)
+        public ActionResult Create(Bet bet, Player player)
         {
+            Random rGen = new Random();
+
+            bet.Horses = new List<Horse>();
+
+            List<Horse> horseList = db.Horses.ToList();
+                        
+            for (int i = 0; i < bet.NoHorses; i++)
+			{
+                int randomNumber = rGen.Next(horseList.Count);
+
+                Horse pickedHorse = horseList[randomNumber];
+
+                bet.Horses.Add(pickedHorse);			 
+			}
+            
+
             if (ModelState.IsValid)
             {
                 db.Bets.Add(bet);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Result", "Home", bet); 
             }
 
             return View(bet);
