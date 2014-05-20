@@ -26,7 +26,7 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Bet", action = "Create", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }
