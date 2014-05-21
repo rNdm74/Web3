@@ -5,3 +5,10 @@ E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.char
 E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.csprojResolveAssemblyReference.cache
 E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.dll
 E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.pdb
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\bin\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.dll
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\bin\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.pdb
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\bin\EntityFramework.dll
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\bin\EntityFramework.xml
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.csprojResolveAssemblyReference.cache
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.dll
+V:\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.pdb

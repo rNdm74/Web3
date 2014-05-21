@@ -1,7 +1,30 @@
-﻿@{
+﻿@model asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Bet
+           
+@{
     ViewBag.Title = "Result";
 }
 
 <h2>Result</h2>
 
-@ViewBag.Race
+<fieldset>
+    <legend>Bet</legend>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Horses.Count)
+    </div>
+
+    <div class="display-label">BetAmount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BetAmount)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">NoHorses</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoHorses)
+    </div>
+</fieldset>
