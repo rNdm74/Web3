@@ -44,8 +44,10 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         // POST: /Bet/Create
 
         [HttpPost]
-        public ActionResult Create(Bet bet)
+        public ActionResult Create(Bet bet, Player player)
         {
+
+
             if (ModelState.IsValid)
             {
                 db.Bets.Add(bet);
