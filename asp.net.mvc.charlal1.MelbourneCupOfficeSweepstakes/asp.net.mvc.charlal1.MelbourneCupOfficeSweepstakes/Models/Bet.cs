@@ -9,8 +9,8 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models
     {
         public int BetID        { get; set; }
         public string Name      { get; set; }
-        public int BetAmount    { get; set; }
+        public Player Player    { get; set; }
         public int NoHorses     { get; set; }
-        public virtual List<Horse> Horses { get; set; }
+        public int BetAmount = 10;
     }
 }

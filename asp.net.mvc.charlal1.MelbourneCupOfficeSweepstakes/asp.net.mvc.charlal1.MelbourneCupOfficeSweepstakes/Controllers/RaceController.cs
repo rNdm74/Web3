@@ -9,94 +9,92 @@ using asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models;
 
 namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
 { 
-    public class BetController : Controller
+    public class RaceController : Controller
     {
         private MelbourneCupDbContext db = new MelbourneCupDbContext();
 
         //
-        // GET: /Bet/
+        // GET: /Race/
 
         public ViewResult Index()
         {
-            return View(db.Bets.ToList());
+            return View(db.Races.ToList());
         }
 
         //
-        // GET: /Bet/Details/5
+        // GET: /Race/Details/5
 
         public ViewResult Details(int id)
         {
-            Bet bet = db.Bets.Find(id);
-            return View(bet);
+            Race race = db.Races.Find(id);
+            return View(race);
         }
 
         //
-        // GET: /Bet/Create
+        // GET: /Race/Create
 
-        public ActionResult Create(Player player)
+        public ActionResult Create()
         {
-            Bet bet = new Bet();
-            bet.Player = player;
-            return View(bet);
+            return View();
         } 
 
         //
-        // POST: /Bet/Create
+        // POST: /Race/Create
 
         [HttpPost]
-        public ActionResult Create(Bet bet)
+        public ActionResult Create(Race race)
         {
             if (ModelState.IsValid)
             {
-                db.Bets.Add(bet);
+                db.Races.Add(race);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home", bet);  
+                return RedirectToAction("Index");  
             }
 
-            return View(bet);
+            return View(race);
         }
         
         //
-        // GET: /Bet/Edit/5
+        // GET: /Race/Edit/5
  
         public ActionResult Edit(int id)
         {
-            Bet bet = db.Bets.Find(id);
-            return View(bet);
+            Race race = db.Races.Find(id);
+            return View(race);
         }
 
         //
-        // POST: /Bet/Edit/5
+        // POST: /Race/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Bet bet)
+        public ActionResult Edit(Race race)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bet).State = EntityState.Modified;
+                db.Entry(race).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(bet);
+            return View(race);
         }
 
         //
-        // GET: /Bet/Delete/5
+        // GET: /Race/Delete/5
  
         public ActionResult Delete(int id)
         {
-            Bet bet = db.Bets.Find(id);
-            return View(bet);
+            Race race = db.Races.Find(id);
+            return View(race);
         }
 
         //
-        // POST: /Bet/Delete/5
+        // POST: /Race/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Bet bet = db.Bets.Find(id);
-            db.Bets.Remove(bet);
+            Race race = db.Races.Find(id);
+            db.Races.Remove(race);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

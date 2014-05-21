@@ -14,10 +14,21 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        public ActionResult Index(Bet bet, Player player)
         {
             //SeedDatabase();
-            return View();
+
+            // Get list of current bet players
+            // Randomly choose players that will bet
+            // show user bets
+
+            List<Horse> horses = db.Horses.ToList();
+            List<Player> players = db.Players.ToList();
+            List<Bet> bets = db.Bets.ToList();
+            Bet lastBet = bets.Last();
+            lastBet.Player.Horses = GetHorsesList(lastBet.NoHorses);
+
+            return View(lastBet);
         }
 
         //
@@ -28,6 +39,29 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
             ViewBag.Bet = createBet(bet);
 
             return View(createBet(bet));
+        }
+
+        private List<Horse> GetHorsesList(int NoHorses) 
+        {
+            Random rGen = new Random();
+
+            List<Horse> pickedHorses = new List<Horse>();
+
+            List<Horse> horseList = db.Horses.ToList();
+
+            for (int i = 0; i < NoHorses; i++)
+            {
+                int randomNumber = rGen.Next(horseList.Count);
+
+                Horse pickedHorse = horseList[randomNumber];
+
+                horseList.RemoveAt(randomNumber);
+                // Check that horse is not in list
+                
+                pickedHorses.Add(pickedHorse);
+            }
+
+            return pickedHorses;
         }
 
         private Bet createBet(Bet bet) 
@@ -49,7 +83,7 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
                 pickedHorses.Add(pickedHorse);
             }
 
-            newBet.Horses = pickedHorses;
+            //newBet.Horses = pickedHorses;
 
             return newBet;
         }

@@ -1,6 +1,5 @@
-﻿@model IEnumerable<asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Bet>  
+﻿@model IEnumerable<asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Bet>
 
-                  
 @{
     ViewBag.Title = "Index";
 }
@@ -10,12 +9,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
 <table>
     <tr>
-        <th>
-            BetAmount
-        </th>
         <th>
             Name
         </th>
@@ -25,12 +20,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BetAmount)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -38,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.NoHorses)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.BetID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.BetID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.BetID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.BetID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BetID })
         </td>
     </tr>
 }

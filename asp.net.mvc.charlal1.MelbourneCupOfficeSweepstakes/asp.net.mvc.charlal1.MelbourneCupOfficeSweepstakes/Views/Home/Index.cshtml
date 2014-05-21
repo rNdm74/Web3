@@ -1,5 +1,5 @@
-﻿@model List<asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Bet>
-
+﻿@model asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Bet
+          
 @{
     ViewBag.Title = "Home";
 }
@@ -7,27 +7,45 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+<fieldset>
+    <legend>Bet</legend>
 
+    <div class="display-label">BetAmount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BetAmount)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">NoHorses</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoHorses)
+    </div>
+
+    @foreach (var item in Model.Player.Horses)
+    { 
+        <p>@item.Name</p>
+    }
+    
+
+</fieldset>
+
+<fieldset>
+    <legend>Registration</legend>
+
+    <div class="display-label"><a href='@Url.Content("~/Player/Create")'>Register</a></div>
+    
+</fieldset>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Race Time</legend>
-        <hr />
-        <label id="lBettingPool">Betting Pool:</label>
-        <label id="lAvailablePool">$100 (example)</label>
-        <hr />
-        <label id="lMyWinnings">My Winnings:</label>
-        <label id="lWinnings">You have not won anything</label>
-        <hr />
-        <a href='@Url.Content("~/Player/Create")'>Not Registered</a>
-        <hr />
-        <a href='@Url.Content("~/Bet/Create")'>Place Bet</a>
-        <hr />
-        <label id="lYourHorses">Your horses:</label>
-        <label id="lAssignedHorses">You have not placed a bet</label>
-        <hr />
+        
         <input type="submit" value="Simulate Race" />
     </fieldset>
 }

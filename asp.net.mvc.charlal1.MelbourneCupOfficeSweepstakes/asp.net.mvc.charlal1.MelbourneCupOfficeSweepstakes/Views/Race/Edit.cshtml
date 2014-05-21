@@ -1,4 +1,4 @@
-﻿@model asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Bet
+﻿@model asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Race
 
 @{
     ViewBag.Title = "Edit";
@@ -12,24 +12,16 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Bet</legend>
+        <legend>Race</legend>
 
-        @Html.HiddenFor(model => model.BetID)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+        @Html.HiddenFor(model => model.RaceID)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.NoHorses)
+            @Html.LabelFor(model => model.MoneyPool)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NoHorses)
-            @Html.ValidationMessageFor(model => model.NoHorses)
+            @Html.EditorFor(model => model.MoneyPool)
+            @Html.ValidationMessageFor(model => model.MoneyPool)
         </div>
 
         <p>
