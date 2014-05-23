@@ -10,6 +10,7 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models
         public int StatusID                         { get; set; }
         public virtual List<Player> BettingPlayers  { get; set; }
         public virtual List<Horse> AvailableHorses  { get; set; }
+        public int BettingPool { get; set; }
 
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,80 +14,82 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         private MelbourneCupDbContext db = new MelbourneCupDbContext();
 
         //
-        // GET: /Home/
+        // GET: /Signup Form/
 
-        public ActionResult Index(Bet bet, Player player)
+        public ActionResult SignupForm() 
         {
+            List<Horse> dbHorses = db.Horses.ToList();
+            List<Player> dbPlayers = db.Players.ToList();
+
+            DbView dbView = new DbView { AllHorses=dbHorses, AllPlayers=dbPlayers };
             //SeedDatabase();
 
-            // Get list of current bet players
-            // Randomly choose players that will bet
-            // show user bets
-
-            List<Horse> horses = db.Horses.ToList();
-            List<Player> players = db.Players.ToList();
-            List<Bet> bets = db.Bets.ToList();
-            Bet lastBet = bets.Last();
-            lastBet.Player.Horses = GetHorsesList(lastBet.NoHorses);
-
-            return View(lastBet);
+            return View(dbView);
         }
 
         //
-        // POST: /Player/Create
-        public ActionResult Result(Bet bet, Player player)
+        // POST: /Signup Form/
+        [HttpPost]
+        public ActionResult SignupForm(DbView signUpFormData) 
         {
+            Player newPlayer = signUpFormData.SignUpPlayer;
 
-            ViewBag.Bet = createBet(bet);
-
-            return View(createBet(bet));
-        }
-
-        private List<Horse> GetHorsesList(int NoHorses) 
-        {
             Random rGen = new Random();
 
-            List<Horse> pickedHorses = new List<Horse>();
+            // Randomly select horses
+            List<Horse> horses = db.Horses.ToList();
 
-            List<Horse> horseList = db.Horses.ToList();
+            // Init player horses list
+            newPlayer.Horses = new List<Horse>();
 
-            for (int i = 0; i < NoHorses; i++)
-            {
-                int randomNumber = rGen.Next(horseList.Count);
+            // For each horse that player has chosen
+            for (int i = 0; i < newPlayer.NoHorses; i++)
+			{
+                // Pick random horse
+                int pick = rGen.Next(horses.Count);
 
-                Horse pickedHorse = horseList[randomNumber];
+                // Create horse to modify
+                Horse pickedHorse = db.Horses.Find(horses[pick].HorseID);
 
-                horseList.RemoveAt(randomNumber);
-                // Check that horse is not in list
+                // Add the player to the horse
+                pickedHorse.player = newPlayer;
+
+                // Modify horse in db
+                db.Entry(pickedHorse).State = EntityState.Modified;
                 
-                pickedHorses.Add(pickedHorse);
+                // Check if horse is free to allocate
+                //if(horses[pick].player.PlayerID != player.PlayerID)
+                newPlayer.Horses.Add(horses[pick]);
+			}
+
+            if (ModelState.IsValid)
+            {
+                // add new person to the Dbset
+                db.Players.Add(newPlayer);
+                // Save changes
+                db.SaveChanges();
+                // hand off to next view
+                return View("SignupResult", newPlayer);  
             }
 
-            return pickedHorses;
+            // next view will list horses
+            return View(newPlayer);
         }
 
-        private Bet createBet(Bet bet) 
+        public ActionResult SweepstakeStatus(Player currentPlayer) 
         {
-            Bet newBet = new Bet { BetID = bet.BetID, Name = bet.Name, NoHorses = bet.NoHorses, BetAmount = bet.BetAmount };
 
-            Random rGen = new Random();
+            Status sweepstakeStatus = new Status();
+            sweepstakeStatus.BettingPlayers = new List<Player>();
+            sweepstakeStatus.BettingPlayers = db.Players.ToList();
+            sweepstakeStatus.BettingPool = 0;
 
-            List<Horse> pickedHorses = new List<Horse>();
-
-            List<Horse> horseList = db.Horses.ToList();
-
-            for (int i = 0; i < newBet.NoHorses; i++)
+            foreach (var bettingPlayers in sweepstakeStatus.BettingPlayers)
             {
-                int randomNumber = rGen.Next(horseList.Count);
-
-                Horse pickedHorse = horseList[randomNumber];
-
-                pickedHorses.Add(pickedHorse);
+                sweepstakeStatus.BettingPool += 10;
             }
 
-            //newBet.Horses = pickedHorses;
-
-            return newBet;
+            return View(sweepstakeStatus);
         }
 
         private void SeedDatabase() 

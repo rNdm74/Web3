@@ -1,108 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models;
 
 namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
-{ 
+{
     public class RaceController : Controller
     {
         private MelbourneCupDbContext db = new MelbourneCupDbContext();
 
         //
-        // GET: /Race/
+        // GET: /Results/
 
-        public ViewResult Index()
+        public ActionResult RunRace()
         {
-            return View(db.Races.ToList());
-        }
 
-        //
-        // GET: /Race/Details/5
+            Status sweepstakeStatus = new Status();
+            sweepstakeStatus.BettingPlayers = new List<Player>();
+            sweepstakeStatus.BettingPlayers = db.Players.ToList();
+            sweepstakeStatus.BettingPool = sweepstakeStatus.BettingPlayers.Count * 10;
 
-        public ViewResult Details(int id)
-        {
-            Race race = db.Races.Find(id);
-            return View(race);
-        }
+            List<Horse> horses = db.Horses.ToList();
 
-        //
-        // GET: /Race/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Race/Create
-
-        [HttpPost]
-        public ActionResult Create(Race race)
-        {
-            if (ModelState.IsValid)
+            foreach (var bettingPlayer in sweepstakeStatus.BettingPlayers)
             {
-                db.Races.Add(race);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+                foreach (var horse in bettingPlayer.Horses)
+                {
+                    if (horse.FinishingPlace == 1)
+                        bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.5);
+
+                    if (horse.FinishingPlace == 2)
+                        bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.25);
+
+                    if (horse.FinishingPlace == 3)
+                        bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.15);
+
+                    if (horse.FinishingPlace == 12)
+                        bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.10);
+                    
+                }
             }
 
-            return View(race);
-        }
-        
-        //
-        // GET: /Race/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            Race race = db.Races.Find(id);
-            return View(race);
+            // Get list of horses for race
+
+            // 
+            //Race newRace = new Race();
+            //newRace.MoneyPool = sweepstakeStatus.BettingPool;
+            //newRace.Winners =
+
+            return View(sweepstakeStatus);
         }
 
-        //
-        // POST: /Race/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Race race)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(race).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(race);
-        }
-
-        //
-        // GET: /Race/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            Race race = db.Races.Find(id);
-            return View(race);
-        }
-
-        //
-        // POST: /Race/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            Race race = db.Races.Find(id);
-            db.Races.Remove(race);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }
