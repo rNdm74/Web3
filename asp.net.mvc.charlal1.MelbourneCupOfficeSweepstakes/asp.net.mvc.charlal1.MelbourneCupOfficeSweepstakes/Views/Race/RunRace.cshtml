@@ -1,0 +1,25 @@
+﻿@model asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models.Status
+
+@{
+    ViewBag.Title = "Race Results";
+}
+
+<h2>RunRace</h2>
+
+@foreach (var player in Model.BettingPlayers)
+{      
+    if (player.Horses.Count > 0)
+    {
+        <fieldset>
+            <legend>Betting Player @Html.Label(player.PlayerID.ToString())</legend>
+        <p>@Html.Label(player.Name) won $ @Html.Label(player.Winnings.ToString())</p>
+        </fieldset>
+    }
+}
+
+<fieldset>
+    <legend>Sweepstakes Status</legend>
+
+    <div class="display-label"><a href='@Url.Content("~/Home/SignupForm")'>Home</a></div>
+    
+</fieldset>
