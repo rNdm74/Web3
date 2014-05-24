@@ -11,13 +11,13 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Models
     {
         public int PlayerID                 { get; set; }
         [Required]
-        [DisplayName("Player Name")]
+        [DisplayName("Name")]
         public string Name                  { get; set; }
         [Required]
-        [DisplayName("Player E-Mail")]
+        [DisplayName("E-Mail")]
         public string Email                 { get; set; }
         [Required]
-        [DisplayName("Player Horses")]
+        [DisplayName("number of horses")]
         public int NoHorses                 { get; set; }
         public int Winnings                 { get; set; }
         public virtual List<Horse> Horses   { get; set; }

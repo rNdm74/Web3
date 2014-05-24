@@ -13,16 +13,74 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
     {
         private MelbourneCupDbContext db = new MelbourneCupDbContext();
 
+
+        public ActionResult NewRace()
+        {
+            //List<Player> dbPlayers = db.Players.ToList();
+
+            //foreach (Player p in dbPlayers)
+            //{
+                
+            //}
+
+            db.Database.Initialize(true);
+
+            return RedirectToAction("SignupForm", "Home"); 
+        }
+
         //
         // GET: /Signup Form/
+
+        public ActionResult RaceResult()
+        {
+            if (TempData["raceResults"] != null)
+            {
+                DbView raceResultDbView = (DbView) TempData["raceResults"];
+
+                return View("SignupForm", raceResultDbView);
+            }
+
+            return RedirectToAction("SignupForm", "Home");
+        }
+
+        //
+        // POST: /RaceResult/
+        [HttpPost]
+        public ActionResult RaceResult(DbView signUpFormData)
+        {
+            DbView dbView = ProcessHttpPost(signUpFormData);
+
+            return View("SignupForm", dbView);
+        }
 
         public ActionResult SignupForm() 
         {
             List<Horse> dbHorses = db.Horses.ToList();
             List<Player> dbPlayers = db.Players.ToList();
 
-            DbView dbView = new DbView { AllHorses=dbHorses, AllPlayers=dbPlayers };
-            //SeedDatabase();
+            List<Horse> availableHorses = new List<Horse>();
+
+            foreach (Horse h in dbHorses)
+            {
+                if (h.player == null)
+                    availableHorses.Add(h);
+                
+            }
+
+            Status sweepstakeStatus = new Status();
+            sweepstakeStatus.BettingPlayers = new List<Player>();
+            sweepstakeStatus.BettingPlayers = db.Players.ToList();
+            sweepstakeStatus.BettingPool = 0;
+
+            foreach (var bettingPlayers in sweepstakeStatus.BettingPlayers)
+            {
+                sweepstakeStatus.BettingPool += (10 * bettingPlayers.Horses.Count);
+            }
+
+            
+            DbView dbView = new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus=sweepstakeStatus };
+
+            
 
             return View(dbView);
         }
@@ -32,53 +90,84 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         [HttpPost]
         public ActionResult SignupForm(DbView signUpFormData) 
         {
+            DbView dbView = ProcessHttpPost(signUpFormData);
+
+            ModelState.Clear();
+
+            return View("SignupForm", dbView);            
+        }
+
+        private DbView ProcessHttpPost(DbView signUpFormData) 
+        {
             Player newPlayer = signUpFormData.SignUpPlayer;
 
             Random rGen = new Random();
 
-            // Randomly select horses
-            List<Horse> horses = db.Horses.ToList();
+            // Get latest db information
+            List<Horse> dbHorses = db.Horses.ToList();
+            List<Player> dbPlayers = db.Players.ToList();
+
+            // Find available horses
+            List<Horse> availableHorses = new List<Horse>();
+
+            foreach (Horse h in dbHorses)
+            {
+                if (h.player == null)
+                    availableHorses.Add(h);
+            }
 
             // Init player horses list
             newPlayer.Horses = new List<Horse>();
 
             // For each horse that player has chosen
             for (int i = 0; i < newPlayer.NoHorses; i++)
-			{
+            {
                 // Pick random horse
-                int pick = rGen.Next(horses.Count);
+                int pick = rGen.Next(availableHorses.Count);
 
-                // Create horse to modify
-                Horse pickedHorse = db.Horses.Find(horses[pick].HorseID);
+                while (newPlayer.Horses.Contains(availableHorses[pick]))
+                {
+                    pick = rGen.Next(availableHorses.Count);
+                }
 
-                // Add the player to the horse
-                pickedHorse.player = newPlayer;
+                newPlayer.Horses.Add(availableHorses[pick]);
+            }
 
-                // Modify horse in db
-                db.Entry(pickedHorse).State = EntityState.Modified;
-                
-                // Check if horse is free to allocate
-                //if(horses[pick].player.PlayerID != player.PlayerID)
-                newPlayer.Horses.Add(horses[pick]);
-			}
 
-            if (ModelState.IsValid)
+            bool playerExists = false;
+
+            // Test is player exists in db
+            foreach (Player p in dbPlayers)
+            {
+                if (p.Name.Equals(newPlayer.Name))
+                    playerExists = true;
+            }
+
+            // Add to database
+            if (!playerExists && ModelState.IsValid)
             {
                 // add new person to the Dbset
                 db.Players.Add(newPlayer);
                 // Save changes
                 db.SaveChanges();
                 // hand off to next view
-                return View("SignupResult", newPlayer);  
+                //return View("SignupResult", newPlayer);
             }
 
-            // next view will list horses
-            return View(newPlayer);
-        }
+            // Get latest db information
+            dbHorses = db.Horses.ToList();
+            dbPlayers = db.Players.ToList();
 
-        public ActionResult SweepstakeStatus(Player currentPlayer) 
-        {
+            // Find available horses
+            availableHorses = new List<Horse>();
 
+            foreach (Horse h in dbHorses)
+            {
+                if (h.player == null)
+                    availableHorses.Add(h);
+            }
+
+            // Create sweepstakes information
             Status sweepstakeStatus = new Status();
             sweepstakeStatus.BettingPlayers = new List<Player>();
             sweepstakeStatus.BettingPlayers = db.Players.ToList();
@@ -86,36 +175,11 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
 
             foreach (var bettingPlayers in sweepstakeStatus.BettingPlayers)
             {
-                sweepstakeStatus.BettingPool += 10;
+                sweepstakeStatus.BettingPool += (10 * bettingPlayers.Horses.Count);
             }
 
-            return View(sweepstakeStatus);
-        }
-
-        private void SeedDatabase() 
-        {
-            var Horses = new List<Horse> 
-            {
-                new Horse{Form="13X66X10X1", Name="GLASS HARMONIUM",    FinishingPlace=4},
-                new Horse{Form="12X3X12X91", Name="DUNADEN",            FinishingPlace=1},
-                new Horse{Form="X446X13137", Name="DRUNKEN SAILOR",     FinishingPlace=12},
-                new Horse{Form="2573X34844", Name="MANIGHAR",           FinishingPlace=5},
-                new Horse{Form="3621X5X406", Name="UNUSUAL SUSPECT",    FinishingPlace=9},
-                new Horse{Form="2164112461", Name="FOX HUNT",           FinishingPlace=7},
-                new Horse{Form="111X4215X5", Name="LUCAS CRANACH",      FinishingPlace=3},
-                new Horse{Form="X025X67009", Name="PRECEDENCE",         FinishingPlace=11},
-                new Horse{Form="9X20141053", Name="RED CADEAUX",        FinishingPlace=2},
-                new Horse{Form="189X223274", Name="LOST IN THE MOMENT", FinishingPlace=6},
-                new Horse{Form="23245X0622", Name="AT FIRST SIGHT",     FinishingPlace=10},
-                new Horse{Form="0121X07201", Name="NIWOT",              FinishingPlace=8},
-            };
-
-            foreach (Horse h in Horses)
-            {
-                db.Horses.Add(h);
-            }
-
-            db.SaveChanges();
+            // Update dbView
+            return new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus = sweepstakeStatus, PlayerExists = playerExists, SignUpPlayer=new Player() };
         }
     }
 }

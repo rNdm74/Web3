@@ -33,7 +33,8 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes
 
         protected void Application_Start()
         {
-            //Database.SetInitializer(new DropCreateDatabaseAlways<MelbourneCupDbContext>());
+            Database.SetInitializer(new DatabaseInit());
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
