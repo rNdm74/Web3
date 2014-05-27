@@ -4,36 +4,16 @@
     ViewBag.Title = "MelbourneSweepstakes";
 }
 
+<div class="container-fluid pad-bottom ">
+
 <!-- PAGE HEADER -->
 <div class="container">
 
     <!-- BANNER -->
-    <div class="col-md-9">
+    <div class="col-md-12">
         <img class="img-responsive" src="../../Content/images/logo-mcc.png" alt="Melbourne Cup 2014"/>
     </div>
     <!-- /. BANNER -->
-    
-    <!-- RUN RACE BUTTON -->
-    <div class="col-md-3">
-        <!-- If race has not started display run race or minimum players to start race -->
-        @if (Model.WinningHorses == null)
-        {
-            <!-- If there is less than two player signed up race cannot start else show run race button -->
-            if (Model.AllPlayers.Count < 3)
-            {
-                <h1><a href="#" class="btn btn-danger btn-lg" role="button" disabled="disabled">Minimum of 3 players to start race &raquo;</a></h1>                           
-            }
-            else
-            {
-                <h1><a href="@Url.Content("~/Race/RunRace")" class="btn btn-success btn-lg" role="button">Run Race &raquo;</a></h1>
-            }
-        }
-        else
-        {
-            <h1><a href="@Url.Content("~/Home/NewRace")" class="btn btn-primary btn-lg" role="button">New Race &raquo;</a></h1>
-        }
-    </div> 
-    <!-- /. RUN RACE BUTTON --> 
           
 </div>
 <!-- /. PAGE HEADER -->
@@ -41,195 +21,290 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN CONTENT ROW -->
 <div class="row">
 
-    <!-- AVAILABLE HORSES -->
+    <!-- BETTING POOL, SIGNED UP PLAYERS COLUMN -->
+    <div class="col-md-4">
+
+        <!-- PLAYER SIGN UP FORM -->
+        <!-- If the race has not started display the signup form 
+             otherwise display nothing in the column -->
+        @if (Model.WinningHorses == null)
+        {
+            using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <!-- PANEL-INFO -->
+                <div class="panel panel-primary">
+
+                    <!-- PANEL-BODY -->
+                    <div class="panel-body">
+                        <h3 class="sub-header">Player Signup</h3>
+                        <br />
+                        <!-- FORM -->
+                        <div class="form-signin">
+                            
+                            <!-- If there are no more horses to bet on show message to user else show form -->
+                            @if (Model.AllHorses.Count <= 0)
+                            {
+                                <p style="color: Red;">@Html.Label("No more horses available to bet on")</p>
+                            }
+                            else
+                            {
+                                <!-- Show the user that play is already signed up -->
+                                
+                               
+                                <!-- SIGN UP -->
+                                <div class="col-md-6">
+                                    <!-- NAME -->
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.SignUpPlayer.Name)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.SignUpPlayer.Name, new { @class = "form-control" })
+                                    </div>
+                                    
+                                    <div style="color: Red;"> 
+                                        @Html.ValidationMessageFor(model => model.SignUpPlayer.Name)
+                                        @if (Model.PlayerExists != null && Model.PlayerExists[0]){ <text>Name is already in use</text> }
+                                    </div>
+
+                                    <!-- EMAIL -->
+                                    <div class="editor-label">
+                                        @Html.LabelFor(model => model.SignUpPlayer.Email)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(model => model.SignUpPlayer.Email, new { @class = "form-control" })                    
+                                    </div>
+                                    
+                                    <p style="color: Red;"> 
+                                        @Html.ValidationMessageFor(model => model.SignUpPlayer.Email)
+                                        @if (Model.PlayerExists != null && Model.PlayerExists[1]){ <text>Email is already in use</text> }
+                                    </p>
+                                </div>
+                                <!-- /. SIGN UP -->
+                                
+                                <!-- PLACE BET LIST -->
+                                <div class="col-md-6">
+
+                                    <!-- PLACE BET LABEL -->
+                                    <div class="editor-label">
+                                        @Html.Label("Place bet")
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.SignUpPlayer.NoHorses)
+                                    <!-- /. PLACE BET LABEL -->
+
+                                    <!-- LIST -->
+                                    <ul class="list-group">
+                                        <!-- Display is there is more than one horse left -->  
+                                        @if (Model.AllHorses.Count >= 1)
+                                        {
+                                            <li class="list-group-item">
+                                                <span style="float: right;">@Html.RadioButtonFor(model => model.SignUpPlayer.NoHorses, 1)</span>
+                                                1 Horse
+                                            </li>                      
+                                        }
+                                        <!-- Display if there is more than two horses left -->
+                                        @if (Model.AllHorses.Count >= 2)
+                                        {
+                                            <li class="list-group-item">
+                                                <span style="float: right;">@Html.RadioButtonFor(model => model.SignUpPlayer.NoHorses, 2)</span>
+                                                2 Horses
+                                            </li>                      
+                                        }
+                                        <!-- Display if there is more than three horses left -->
+                                        @if (Model.AllHorses.Count >= 3)
+                                        {
+                                            <li class="list-group-item">
+                                                <span style="float: right;">@Html.RadioButtonFor(model => model.SignUpPlayer.NoHorses, 3)</span>
+                                                3 Horses
+                                            </li>
+                                        }
+                                    </ul>
+                                    <!-- /. LIST -->
+
+                                </div>
+                                <!-- /. PLACE BET LIST -->
+                                
+                                <br />
+                                
+                                <!-- SIGN UP BUTTON -->
+                                <p style="float: right; margin-top: 2em;">
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Signup" />
+                                </p>
+                                <!-- /. SIGN UP BUTTON -->
+                            }
+                        </div> 
+                        <!-- /. FORM END -->
+
+                    </div> 
+                    <!-- /. PANEL-BODY -->
+
+                </div> 
+                <!-- /. PANEL PANEL-INFO -->
+            }
+        }
+        <!-- /. PLAYER SIGN UP FORM -->
+
+        <!-- BETTING POOL, SIGNED UP PLAYERS ROW -->
+        <div class="row">
+
+            <!-- BETTING POOL NESTED COLUMN -->
+            <div class="col-md-6">
+                <div class="panel panel-default panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <h3 class="">$@Model.SweepstakeStatus.BettingPool.ToString()</h3>
+                            Amount available in betting pool
+                        </li>
+                        <li class="list-group-item">
+                            <h3 class="">@Model.SweepstakeStatus.BettingPlayers.Count.ToString()</h3>
+                            Number of players placing bets
+                        </li>
+                    </ul>        
+                </div>
+            </div>
+            <!-- /. BETTING POOL NESTED COLUMN -->
+
+            <!-- SIGNED UP PLAYERS NESTED COLUMN -->
+            <div class="col-md-6">
+
+                <!-- SIGNED UP PLAYERS LIST -->
+                <div class="panel panel-default panel-body">
+                    <h3 class="sub-header">Signed up players</h3>
+                    <br />
+                    <ul class="list-group">
+
+                    <!-- Display no players signed up is no players in the database else display list of players  -->
+                    @if (Model.AllPlayers.Count <= 0)
+                    {
+                        <li class="list-group-item">
+                            <span class="badge">0</span>
+                            There are no players signed up
+                        </li>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.AllPlayers)
+                        {
+                            <li class="list-group-item">
+                                <span class="badge">@item.PlayerID</span>
+                                @item.Name
+                            </li>
+                        }
+                    } 
+                    </ul>
+                </div>
+                <!-- /. SIGNED UP PLAYERS LIST -->
+
+            </div>
+            <!-- /. SIGNED UP PLAYERS NESTED COLUMN -->
+
+        </div> 
+        <!-- BETTING POOL, SIGNED UP PLAYERS ROW -->
+        
+    </div>
+    <!-- /. BETTING POOL, SIGNED UP PLAYERS COLUMN -->
+
+    <!-- AVAILABLE HORSES COLUMN -->
     <div class="col-md-2">
+
+        <!-- AVAILABLE HORSES -->
         <div class="panel panel-info panel-body">
-            <h2 class="sub-header">Available Horses</h2>
+            <h3 class="sub-header">Available Horses</h3>
+            <br />
             <ul class="list-group">
                 <!-- Displays the list of all available horses from the database -->
                 @foreach (var item in Model.AllHorses)
                 {
-                    <li class="list-group-item">
-                        <span class="badge">@item.HorseID</span>
+                    <li class="list-group-item list-group-item-info">
+                        @*<span class="badge">@item.HorseID</span>*@
                         @item.Name
                     </li>
                 }          
             </ul>
         </div>
+        <!-- /. AVAILABLE HORSES -->
+
     </div>
-    <!-- /. AVAILABLE HORSES -->
-
-<!-- BETTING POOL, SIGNED UP PLAYERS -->
-<div class="col-md-4 fill">
-    <div class="row">
-
-        <!-- BETTING POOL -->
-        <div class="col-md-6">
-            <div class="panel panel-default panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <h2 class="">$@Model.SweepstakeStatus.BettingPool.ToString()</h2>
-                        Amount available in betting pool
-                    </li>
-                    <li class="list-group-item">
-                        <h2 class="">@Model.SweepstakeStatus.BettingPlayers.Count.ToString()</h2>
-                        Number of players placing bets
-                    </li>
-                </ul>        
-            </div>
-        </div>
-        <!-- /. BETTING POOL -->
-
-        <!-- SIGNED UP PLAYERS -->
-        <div class="col-md-6">
-            <div class="panel panel-default panel-body">
-                <ul class="list-group">
-
-                <!-- Display no players signed up is no players in the database else display list of players  -->
-                @if (Model.AllPlayers.Count <= 0)
-                {
-                    <li class="list-group-item">
-                        <span class="badge">0</span>
-                        There are no players signed up
-                    </li>
-                }
-                else
-                {
-                    foreach (var item in Model.AllPlayers)
-                    {
-                        <li class="list-group-item">
-                            <span class="badge">@item.PlayerID</span>
-                            @item.Name
-                        </li>
-                    }
-                } 
-                </ul>
-            </div>
-        </div>
-        <!-- /. SIGNED UP PLAYERS -->
-
-    </div> <!-- /. ROW -->
-    
-    <!-- IF RACE HAS NOT RUN DISPLAY SIGNUP FORM -->
-    @if (Model.WinningHorses == null)
-    {
-        using (Html.BeginForm())
-        {
-            @Html.ValidationSummary(true)
-            <div class="panel panel-info ">
-                <div class="panel-body">
-                    <h2 class="sub-header">Player Signup</h2>
-                    <hr />
-                    <div class="form-signin">
-                        @if (Model.AllHorses.Count <= 0)
-                        {
-                            <p style="color: Red;">@Html.Label("No more horses available to bet on")</p>
-                        }
-                        else
-                        {
-                            <p style="color: Red;">@if (Model.PlayerExists){ @Html.Label("Player already signed up") }</p>
-                            <!-- SIGN UP -->
-                            <div class="col-md-6">
-                                <!-- NAME -->
-                                <div class="editor-label">
-                                    @Html.LabelFor(model => model.SignUpPlayer.Name)
-                                </div>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(model => model.SignUpPlayer.Name, new { @class = "form-control" })
-                                </div>
-                                @Html.ValidationMessageFor(model => model.SignUpPlayer.Name)
-
-                                <!-- EMAIL -->
-                                <div class="editor-label">
-                                    @Html.LabelFor(model => model.SignUpPlayer.Email)
-                                </div>
-                                <div class="editor-field">
-                                    @Html.TextBoxFor(model => model.SignUpPlayer.Email, new { @class = "form-control" })                    
-                                </div>
-                                @Html.ValidationMessageFor(model => model.SignUpPlayer.Email)
-                            </div>
-                            <!-- /. SIGN UP -->
-                            <div class="col-md-6">
-                                <div class="editor-label">
-                                    @Html.Label("Place bet")
-                                </div>
-                                @Html.ValidationMessageFor(model => model.SignUpPlayer.NoHorses)
-                
-                                <ul class="list-group">
-                                  @if (Model.AllHorses.Count >= 1)
-                                  {
-                                    <li class="list-group-item">
-                                        <span style="float: right;">@Html.RadioButtonFor(model => model.SignUpPlayer.NoHorses, 1)</span>
-                                        1 Horse
-                                    </li>                      
-                                  }
-                                  @if (Model.AllHorses.Count >= 2)
-                                  {
-                                    <li class="list-group-item">
-                                        <span style="float: right;">@Html.RadioButtonFor(model => model.SignUpPlayer.NoHorses, 2)</span>
-                                        2 Horses
-                                    </li>                      
-                                  }
-                                  @if (Model.AllHorses.Count >= 3)
-                                  {
-                                    <li class="list-group-item">
-                                        <span style="float: right;">@Html.RadioButtonFor(model => model.SignUpPlayer.NoHorses, 3)</span>
-                                        3 Horses
-                                    </li>
-                                  }
-                                </ul>
-                            </div>
-                            <br />
-                            <p style="float: right; margin-top: 2em;">
-                                <input class="btn btn-primary btn-lg" type="submit" value="Signup" />
-                            </p>
-                
-                        }
-                    </div> <!-- /. END FORM -->
-                </div> <!-- /. PANEL-BODY -->
-            </div> <!-- /. PANEL PANEL-INFO -->
-        }
-    }
-
-</div>
-<!-- /.BETTING POOL, SIGNED UP PLAYERS -->
-
-
-<div class="col-md-4 fill">
-
-
-    <div class="table-responsive panel panel-body panel-success">
-    <h2 class="sub-header">Race Results</h2>
-        <table class="table table-hover">
-            <thead>
-                <tr class="success">
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Winnings</th>
-                </tr>
-            </thead>
-            <tbody>
+    <!-- /. AVAILABLE HORSES COLUMN -->
+        
+    <!-- SWEEPSTAKES STATUS COLUMN -->
+    <div class="col-md-2">
+        <div class="table-responsive panel panel-body panel-danger">
+            <h3 class="sub-header">Sweepstake Status</h3>
+            <br />
+            <table class="table table-hover">
+                <thead>
+                    <tr class="danger">
+                        @*<th>#</th>*@
+                        <th>Horse</th>
+                        <th>Player</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through the betting player from the sweepstakes -->
                 @foreach (var player in Model.SweepstakeStatus.BettingPlayers)
                 {
+                    <!-- If the player has bet on horse(s) -->
+                    if (player.Horses.Count > 0)
+                    {
+                        <!-- Loop through each horse the player bet on and add table row-->
+                        foreach (var horse in player.Horses)
+                        {
+                            <tr  class="danger">
+                                <td>@horse.Name</td>
+                                <td>@player.Name</td>                            
+                            </tr>                  
+                        }
+                    }
+                }
+                </tbody>
+            </table>                
+        </div>
+    </div>
+    <!-- /. SWEEPSTAKES STATUS COLUMN -->
+
+    <!-- RACE, WINNINGS COLUMN -->
+    <div class="col-md-4">
+
+        <!-- RACE RESULTS -->
+        <div class="table-responsive panel panel-body panel-success">
+            <h3 class="sub-header">Race Results</h3>
+            <br />
+            <table class="table table-hover">
+                <thead>
+                    <tr class="success">
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Winnings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Gets all the betting players from the sweepstakes -->
+                @foreach (var player in Model.SweepstakeStatus.BettingPlayers)
+                {
+                    <!-- If the race has started & the player has betted on some horses add table row -->
                     if (Model.WinningHorses != null && player.Horses.Count > 0)
                     {  
-                        <tr>
+                        <tr class="success">
                             <td>@player.PlayerID</td>
                             <td>@player.Name</td>
                             <td>$@player.Winnings.ToString()</td>
                         </tr>          
                     }
                 }
-            </tbody>
-        </table>                
-    </div>
+                </tbody>
+            </table>                
+        </div>
+        <!-- /. RACE RESULTS -->
 
-
+        <!-- FINISHING PLACES -->
         <div class="table-responsive panel panel-body panel-warning">
-        <h2 class="sub-header">Finishing Places</h2>
+            <h3 class="sub-header">Finishing Places</h3>
+            <br />
             <table class="table table-hover">
                 <thead>
                     <tr class="warning">
@@ -240,67 +315,63 @@
                     </tr>
                 </thead>
                 <tbody>
+                <!-- If the race has started -->
                 @if (Model.WinningHorses != null)
                 {
+                    <!-- Loop through the winning horses from the race -->
                     for (int h = 0; h < Model.WinningHorses.Count; h++)
                     {
+                        <!-- If the horse is 1st, 2nd, 3rd or Last add table row -->
                         if (h == 0 || h == 1 || h == 2 || h == Model.WinningHorses.Count - 1)
                         {   
-                            <tr>
+                            <tr class="warning">
                                 <td>@Model.WinningHorses[h].HorseID</td>
                                 <td>@Model.WinningHorses[h].Name</td>
                                 <td>@Model.WinningHorses[h].Form</td>
-                                <td>@(h + 1)</td>
+                                <td>@(h + 1)</td><!-- 0 based making it 1 based -->
                             </tr>                             
                         }
                     }
                 }
                 </tbody>
-        </table>
-    </div> 
+            </table>
+        </div> 
+        <!-- /. FINISHING PLACES -->
 
-    
+    </div>
+    <!-- /. RACE, WINNINGS COLUMN -->
+
+</div> 
+<!-- /. MAIN CONTENT ROW -->
+
 </div>
 
-<div class="col-md-2">
-    <div class="table-responsive panel panel-body panel-danger">
-    <h2 class="sub-header">Sweepstake Status</h2>
-        <table class="table table-hover">
-            <thead>
-                <tr class="danger">
-                    @*<th>#</th>*@
-                    <th>Horse</th>
-                    <th>Player</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var player in Model.SweepstakeStatus.BettingPlayers)
+
+
+<div id="footer">
+    <div class="container-fluid panel-footer panel-danger">
+        <p id="copyright" class="text-muted">Copyright © All rights reserved - <span style="color: Purple;">gambling is bad !</span></p>
+        
+        <!-- RUN RACE BUTTON -->
+        <div style="float: right;">
+            <!-- If race has not started display run race or minimum players to start race -->
+            @if (Model.WinningHorses == null)
             {
-                if (player.Horses.Count > 0)
+                <!-- If there is less than two player signed up race cannot start else show run race button -->
+                if (Model.AllPlayers.Count < 3)
                 {
-                    foreach (var horse in player.Horses)
-                    {
-                        <tr class="">
-                            @*<td>@horse.HorseID.ToString()</td>*@
-                            <td>@horse.Name</td>
-                            <td>@player.Name</td>                            
-                        </tr>                  
-                    }
+                    <h1><a href="#" class="btn btn-danger btn-lg" role="button" disabled="disabled">Minimum of 3 players to start race &raquo;</a></h1>                           
+                }
+                else
+                {
+                    <h1><a href="@Url.Content("~/Race/RunRace")" class="btn btn-success btn-lg" role="button">Run Race &raquo;</a></h1>
                 }
             }
-            </tbody>
-        </table>                
+            else
+            {
+                <h1><a href="@Url.Content("~/Home/NewRace")" class="btn btn-primary btn-lg" role="button">New Race &raquo;</a></h1>
+            }
+        </div> 
+        <!-- /. RUN RACE BUTTON -->    
     </div>
-    
-
 </div>
-
-</div> @*Row End*@
-
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>  
-    <div class="col-md-2"></div>
-</div>
-

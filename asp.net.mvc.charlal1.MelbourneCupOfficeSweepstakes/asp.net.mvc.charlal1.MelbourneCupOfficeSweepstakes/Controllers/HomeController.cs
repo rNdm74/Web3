@@ -13,30 +13,50 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
     {
         private MelbourneCupDbContext db = new MelbourneCupDbContext();
 
+        private DatabaseManager dbm = new DatabaseManager();
+        //
+        // GET: /SignupForm/
+        //
+        // This is loads initial database info for the user
 
-        public ActionResult NewRace()
+        public ActionResult SignupForm()
         {
-            //List<Player> dbPlayers = db.Players.ToList();
+            List<Player> dbPlayers = db.Players.ToList();
+            List<Horse> dbHorses = db.Horses.ToList();
+            List<Horse> availableHorses = dbm.GetAvailableHorses();
+            Status sweepstakeStatus = dbm.GetSweepstakeStatus();
 
-            //foreach (Player p in dbPlayers)
-            //{
-                
-            //}
+            DbView dbView = new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus = sweepstakeStatus };
 
-            db.Database.Initialize(true);
-
-            return RedirectToAction("SignupForm", "Home"); 
+            return View(dbView);
         }
 
         //
-        // GET: /Signup Form/
+        // POST: /SignupForm/
+        //
+        // When a player signs up this processes the form data
+
+        [HttpPost]
+        public ActionResult SignupForm(DbView signUpFormData)
+        {
+            DbView dbView = CreateDbViewFrom(signUpFormData);
+
+            return View("SignupForm", dbView);
+        }
+
+        //
+        // GET: /RaceResult/
+        //
+        // Run from the RaceController after the race has been process it is redirected here
 
         public ActionResult RaceResult()
         {
+            // If there is something in tempdata
             if (TempData["raceResults"] != null)
             {
-                DbView raceResultDbView = (DbView) TempData["raceResults"];
-
+                // Get the dbView from RaceController
+                DbView raceResultDbView = (DbView)TempData["raceResults"];
+                                
                 return View("SignupForm", raceResultDbView);
             }
 
@@ -48,139 +68,62 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
         [HttpPost]
         public ActionResult RaceResult(DbView signUpFormData)
         {
-            DbView dbView = ProcessHttpPost(signUpFormData);
+            DbView dbView = CreateDbViewFrom(signUpFormData);
+
+            // Clears previous form data inputs for next signup
+            ModelState.Clear();
 
             return View("SignupForm", dbView);
         }
 
-        public ActionResult SignupForm() 
+        //
+        // GET: /NewRace/
+        //
+        // Redirects to the main form run when the run race button is clicked
+
+        public ActionResult NewRace()
         {
-            List<Horse> dbHorses = db.Horses.ToList();
-            List<Player> dbPlayers = db.Players.ToList();
+            // Resets the database to it initial state for new sign ups
+            db.Database.Initialize(true);
 
-            List<Horse> availableHorses = new List<Horse>();
-
-            foreach (Horse h in dbHorses)
-            {
-                if (h.player == null)
-                    availableHorses.Add(h);
-                
-            }
-
-            Status sweepstakeStatus = new Status();
-            sweepstakeStatus.BettingPlayers = new List<Player>();
-            sweepstakeStatus.BettingPlayers = db.Players.ToList();
-            sweepstakeStatus.BettingPool = 0;
-
-            foreach (var bettingPlayers in sweepstakeStatus.BettingPlayers)
-            {
-                sweepstakeStatus.BettingPool += (10 * bettingPlayers.Horses.Count);
-            }
-
-            
-            DbView dbView = new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus=sweepstakeStatus };
-
-            
-
-            return View(dbView);
+            return RedirectToAction("SignupForm", "Home"); 
         }
 
         //
-        // POST: /Signup Form/
-        [HttpPost]
-        public ActionResult SignupForm(DbView signUpFormData) 
-        {
-            DbView dbView = ProcessHttpPost(signUpFormData);
+        // ProcessHttpPost
+        //
+        // Used for SignupForm POST and RaceResult POST
+        //
+        // This processes the post data from the form and returns a DbView for the view
 
+        private DbView CreateDbViewFrom(DbView signUpFormData)
+        {
+            // Get the new player fromt he sign up form data
+            Player newPlayer = dbm.CreateNewPlayer(signUpFormData);
+
+            // Clears previous form data inputs for next signup
             ModelState.Clear();
+            
+            // When creating the view the order is IMPORTANT
+            DbView dbView = new DbView();
+                                 
+            // 1. Can add new player to the database
+            dbView.PlayerExists = dbm.AddPlayer(newPlayer, ModelState.IsValid);
 
-            return View("SignupForm", dbView);            
-        }
+            // 2. Get available horses
+            dbView.AllHorses = dbm.GetAvailableHorses();   
 
-        private DbView ProcessHttpPost(DbView signUpFormData) 
-        {
-            Player newPlayer = signUpFormData.SignUpPlayer;
+            // 3. Create sweepstakes information for the webpage
+            dbView.SweepstakeStatus = dbm.GetSweepstakeStatus();
 
-            Random rGen = new Random();
+            // 4. Get latest list of all players in the db
+            dbView.AllPlayers = db.Players.ToList();
 
-            // Get latest db information
-            List<Horse> dbHorses = db.Horses.ToList();
-            List<Player> dbPlayers = db.Players.ToList();
-
-            // Find available horses
-            List<Horse> availableHorses = new List<Horse>();
-
-            foreach (Horse h in dbHorses)
-            {
-                if (h.player == null)
-                    availableHorses.Add(h);
-            }
-
-            // Init player horses list
-            newPlayer.Horses = new List<Horse>();
-
-            // For each horse that player has chosen
-            for (int i = 0; i < newPlayer.NoHorses; i++)
-            {
-                // Pick random horse
-                int pick = rGen.Next(availableHorses.Count);
-
-                // Gen new pick if horse is already in the list
-                while (newPlayer.Horses.Contains(availableHorses[pick]))
-                {
-                    pick = rGen.Next(availableHorses.Count);
-                }
-
-                newPlayer.Horses.Add(availableHorses[pick]);
-            }
-
-
-            bool playerExists = false;
-
-            // Test is player exists in db
-            foreach (Player p in dbPlayers)
-            {
-                if (p.Name.Equals(newPlayer.Name))
-                    playerExists = true;
-            }
-
-            // Add to database
-            if (!playerExists && ModelState.IsValid)
-            {
-                // add new person to the Dbset
-                db.Players.Add(newPlayer);
-                // Save changes
-                db.SaveChanges();
-                // hand off to next view
-                //return View("SignupResult", newPlayer);
-            }
-
-            // Get latest db information
-            dbHorses = db.Horses.ToList();
-            dbPlayers = db.Players.ToList();
-
-            // Find available horses
-            availableHorses = new List<Horse>();
-
-            foreach (Horse h in dbHorses)
-            {
-                if (h.player == null)
-                    availableHorses.Add(h);
-            }
-
-            // Create sweepstakes information
-            Status sweepstakeStatus = new Status();
-            sweepstakeStatus.BettingPlayers = new List<Player>();
-            sweepstakeStatus.BettingPlayers = db.Players.ToList();
-            sweepstakeStatus.BettingPool = 0;
-
-            foreach (var bettingPlayers in sweepstakeStatus.BettingPlayers)
-            {
-                sweepstakeStatus.BettingPool += (10 * bettingPlayers.Horses.Count);
-            }
-
-            // Update dbView
-            return new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus = sweepstakeStatus, PlayerExists = playerExists, SignUpPlayer=new Player() };
-        }
+            // 5. Clears the signup player field in the DbView
+            dbView.SignUpPlayer = new Player();
+            
+            // Returns a new DbView
+            return dbView;
+        }        
     }
 }

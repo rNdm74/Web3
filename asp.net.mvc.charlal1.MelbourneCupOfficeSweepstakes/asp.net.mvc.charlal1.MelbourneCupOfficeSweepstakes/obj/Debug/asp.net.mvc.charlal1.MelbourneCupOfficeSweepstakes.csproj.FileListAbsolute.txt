@@ -11,3 +11,4 @@ E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.char
 E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\bin\EntityFramework.xml
 E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.dll
 E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.pdb
+E:\Work\Web3\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes\obj\Debug\asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.csprojResolveAssemblyReference.cache
