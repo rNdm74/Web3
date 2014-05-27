@@ -39,31 +39,42 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
             {
                 sweepstakeStatus.BettingPool += (10 * bettingPlayers.Horses.Count);
             }
-            
+
+            List<Horse> horsesBetOn = new List<Horse>();
+
+            foreach (var player in sweepstakeStatus.BettingPlayers)
+            {
+                horsesBetOn.AddRange(player.Horses);
+            }
+
+            List<Horse> winningHorses = horsesBetOn.OrderBy(h => h.FinishingPlace).ToList();
+
+
+
             foreach (var bettingPlayer in sweepstakeStatus.BettingPlayers)
             {
                 foreach (var horse in bettingPlayer.Horses)
                 {
-                    if (horse.FinishingPlace == 1)
+                    if (horse == horsesBetOn[0])
                         bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.5);
 
-                    if (horse.FinishingPlace == 2)
+                    if (horse == horsesBetOn[1])
                         bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.25);
 
-                    if (horse.FinishingPlace == 3)
+                    if (horse == horsesBetOn[2])
                         bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.15);
 
-                    if (horse.FinishingPlace == 12)
+                    if (horse == horsesBetOn[horsesBetOn.Count - 1])
                         bettingPlayer.Winnings += (int)(sweepstakeStatus.BettingPool * 0.10);
                     
                 }
             }
 
 
-            List<Horse> winningHorses = dbHorses.OrderBy(h => h.FinishingPlace).ToList();
+
             
 
-            DbView dbView = new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus = sweepstakeStatus, WinningHorses=winningHorses };
+            DbView dbView = new DbView { AllHorses = availableHorses, AllPlayers = dbPlayers, SweepstakeStatus = sweepstakeStatus, WinningHorses=horsesBetOn };
 
             TempData["raceResults"] = dbView;
             //return View(dbView);

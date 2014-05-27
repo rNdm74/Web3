@@ -125,6 +125,7 @@ namespace asp.net.mvc.charlal1.MelbourneCupOfficeSweepstakes.Controllers
                 // Pick random horse
                 int pick = rGen.Next(availableHorses.Count);
 
+                // Gen new pick if horse is already in the list
                 while (newPlayer.Horses.Contains(availableHorses[pick]))
                 {
                     pick = rGen.Next(availableHorses.Count);
