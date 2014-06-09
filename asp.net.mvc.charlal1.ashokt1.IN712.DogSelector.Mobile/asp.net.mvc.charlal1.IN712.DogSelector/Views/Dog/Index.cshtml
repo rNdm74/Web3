@@ -1,0 +1,123 @@
+﻿@model asp.net.mvc.charlal1.IN712.DogSelector.Models.Dog
+
+@{
+    ViewBag.Title = "Dog Selector";
+}
+
+@using (Html.BeginForm("ChooseDogForm", "Dog", FormMethod.Post)) 
+{
+<div class="ui-corner-all custom-corners">
+    <ul data-role="listview">
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label">
+                    <h3>Good With Children:</h3>
+                </div>
+                <div data-role="controlgroup" data-type="horizontal">
+                    @Html.RadioButton("GoodWithChildren", "true", true, new { id="GoodWithChildren1" }) 
+                    <label for="GoodWithChildren1">Definatly</label>
+                    @Html.RadioButton("GoodWithChildren", "false", new { id = "GoodWithChildren2" }) 
+                    <label for="GoodWithChildren2">Don't Mind</label>
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label"><h3>Drooling</h3></div>
+                <div data-role="controlgroup" data-type="horizontal">
+                    @Html.RadioButton("Drools", "false", true, new { id = "Drools1" }) 
+                    <label for="Drools1">No Slobbering</label>
+                    @Html.RadioButton("Drools", "true", new { id = "Drools2" }) 
+                    <label for="Drools2">Don't Mind</label>
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label"><h3>Coat Length</h3></div>
+                <div data-role="controlgroup" data-type="horizontal">
+                    @Html.RadioButton("Coatlength", "Short", true, new { id = "Coatlength1" }) 
+                    <label for="Coatlength1">Short</label>
+                    @Html.RadioButton("Coatlength", "Medium", new { id = "Coatlength2" }) 
+                    <label for="Coatlength2">Medium</label>
+                    @Html.RadioButton("Coatlength", "Long", new { id = "Coatlength3" }) 
+                    <label for="Coatlength3">Long</label>
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup">
+                <div role="heading" class="ui-controlgroup-label"><h3>Preferred Size</h3></div>
+                <div>
+                    @Html.DropDownList("Size", ViewBag.Size as SelectList) 
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label"><h3>Activity Level</h3></div>
+                <div data-role="controlgroup" data-type="vertical">
+                    @Html.RadioButton("ActivityLevel", "Low", true, new { id = "ActivityLevel1" })
+                    <label for="ActivityLevel1">Low</label>
+                    @Html.RadioButton("ActivityLevel", "Medium", new { id = "ActivityLevel2" })
+                    <label for="ActivityLevel2">Med</label>
+                    @Html.RadioButton("ActivityLevel", "High", new { id = "ActivityLevel3" })
+                    <label for="ActivityLevel3">High</label>
+                    @Html.RadioButton("ActivityLevel", "NoPref", new { id = "ActivityLevel4" })
+                    <label for="ActivityLevel4">N/A</label>
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label"><h3>Shedding Level</h3></div>
+                <div data-role="controlgroup" data-type="vertical">
+                    @Html.RadioButton("SheddingLevel", "Low", true, new { id = "SheddingLevel1" })
+                    <label for="SheddingLevel1">Low</label>
+                    @Html.RadioButton("SheddingLevel", "Medium", new { id = "SheddingLevel2" })
+                    <label for="SheddingLevel2">Med</label>
+                    @Html.RadioButton("SheddingLevel", "High", new { id = "SheddingLevel3" })
+                    <label for="SheddingLevel3">High</label>
+                    @Html.RadioButton("SheddingLevel", "NoPref", new { id = "SheddingLevel4" })
+                    <label for="SheddingLevel4">N/A</label>
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label"><h3>Grooming Level</h3></div>
+                <div data-role="controlgroup" data-type="vertical">
+                    @Html.RadioButton("GroomingLevel", "Low", true, new { id = "GroomingLevel1" })
+                    <label for="GroomingLevel1">Low</label>
+                    @Html.RadioButton("GroomingLevel", "Medium", new { id = "GroomingLevel2" })
+                    <label for="GroomingLevel2">Med</label>
+                    @Html.RadioButton("GroomingLevel", "High", new { id = "GroomingLevel3" })
+                    <label for="GroomingLevel3">High</label>
+                    @Html.RadioButton("GroomingLevel", "NoPref", new { id = "GroomingLevel4" })
+                    <label for="GroomingLevel4">N/A</label>
+                </div>
+            </fieldset>
+        </li>
+        <li data-role="fieldcontain">
+            <fieldset data-set="controlgroup" data-iconpos="right">
+                <div role="heading" class="ui-controlgroup-label"><h3>Intelligence Level</h3></div>
+                <div data-role="controlgroup" data-type="vertical">
+                    @Html.RadioButton("IntelligenceLevel", "Low", true, new { id = "IntelligenceLevel1" })
+                    <label for="IntelligenceLevel1">Low</label>
+                    @Html.RadioButton("IntelligenceLevel", "Medium", new { id = "IntelligenceLevel2" })
+                    <label for="IntelligenceLevel2">Med</label>
+                    @Html.RadioButton("IntelligenceLevel", "High", new { id = "IntelligenceLevel3" })
+                    <label for="IntelligenceLevel3">High</label>
+                    @Html.RadioButton("IntelligenceLevel", "NoPref", new { id = "IntelligenceLevel4" })
+                    <label for="IntelligenceLevel4">N/A</label>
+                </div>
+            </fieldset>
+        </li>
+        <li>
+            <fieldset data-set="controlgroup">
+                <input type="submit" value="Find My Dog !"/>
+            </fieldset>
+        </li>
+    </ul>
+</div>
+}
