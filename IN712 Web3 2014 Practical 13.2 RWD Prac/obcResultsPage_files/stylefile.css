@@ -1,0 +1,141 @@
+body {margin:0; font-size:13px; font-family: Georgia,"Times New Roman",Times,serif; color:#333; background-color:#8c8; background-image:url(images/back.gif); text-align:center}
+
+div.wrapper {position:relative; width:780px; margin:13px auto 0px auto; text-align:left;}
+
+div.content {position:relative; padding:10px 30px 10px 20px; width:730px; line-height:normal; background:#fff url(images/shade.gif) top right repeat-y; text-align:justify;}
+div.contentleft {float:left; width:350px;}
+div.contentright {float:right; width:350px;}
+
+div.contentleft3 {width:230px;}
+div.contentcentre3 {position:absolute; left:275px; top:50px; width:230px;}
+div.contentright3 {position:absolute; right:20px; top:50px; width:230px;}
+
+div.contentleft33 {width:230px;}
+div.contentcentre33 {position:absolute; left:275px; top:50px; width:230px;}
+div.contentright33 {position:absolute; right:20px; top:50px; width:230px;}
+
+div.contentleftbig {float:left; width:490px;}
+div.contentrightsmall {float:right; width:200px; padding:8px; border-left:solid #8ac 2px; background-color:#def; text-align:left}
+div.contentleftsmall {float:left; width:110px; padding:10px; background-color:#def; text-align:left}
+div.contentrightbig {float:right; width:570px;}
+
+div.contentleftbigger {float:left; width:520px;}
+div.contentrightsmaller {float:right; width:170px; padding:8px; border-left:solid #8ac 2px; background-color:#def; text-align:left}
+
+div.contentblue {padding:8px; border-left:solid #8ac 2px; background-color:#def; text-align:left}
+
+
+div.pad10 {padding:10px}
+div.nav {font-size:17px; line-height:15px; color:red}
+
+div.analysis {position:absolute; right:0px; bottom:0px; width:77px; height:60px; font-size:10px; line-height:12px; border-left:solid 1px black; border-top:solid 1px black; padding-left:3px}
+div.north {position:absolute; left:70px; top:5px; line-height:14px;}
+div.south {position:absolute; left:70px; top:135px; line-height:14px;}
+div.east {position:absolute; left:135px; top:70px; line-height:14px;}
+div.west {position:absolute; left:5px; top:70px; line-height:14px;}
+div.deal {position:relative; width:240px; height:200px; font-size:14px; font-family:Verdana,Arial,nonserif;}
+div.board {position:absolute; font-size:32px; color:#888}
+div.dealer {position:absolute; left:170px; top:5px; font-size:13px; font-style:italic}
+div.ptsN {position:absolute; left:25px; top:145px; font-size:9px;}
+div.ptsS {position:absolute; left:25px; top:175px; font-size:9px;}
+div.ptsE {position:absolute; left:40px; top:160px; font-size:9px;}
+div.ptsW {position:absolute; left:10px; top:160px; font-size:9px;}
+
+p {margin-top:6px; margin-bottom:0px;}
+p.left {text-align:left}
+p.large {font-size:110%; margin-top:0px; margin-bottom:9px}
+
+a {color: #282; text-decoration: none; font-size:15px}
+a:visited {color: #282}
+a:hover {text-decoration: underline}
+
+a.blue {color:#55a;}
+a.blue:hover {color:#88a}
+a.blue:active {color:#88a}
+
+a.new {font-weight:bold;}
+
+a.normal {font-size:13px;}
+a.normal:hover {text-decoration: underline}
+
+a.small {font-size:12px; color:#55a}
+a.small:hover {text-decoration: underline}
+/*a.small:hover {color: #88a}*/
+
+a.nav {font-size:17px; line-height:15px; color:#282; text-decoration: none}
+a.nav:hover {color:#6b6}
+a.nav:active {color:#6b6}
+
+a.nav1 {font-size:17px; line-height:15px; color:#55a; text-decoration: none}
+a.nav1:hover {color:#88a}
+a.nav1:active {color:#88a}
+
+a.edit {font-size:14px; line-height:13px; color:#654; text-decoration: none}
+a.edit:hover {color:#6b6}
+a.edit:active {color:#6b6}
+
+img {border:none}
+img.border {border-color:#ccf; border-style:solid; border-width:1px;}
+
+h2 {font-size: 22px; color: #448; font-weight: normal; margin-bottom:1px; margin-top:0px; text-align:left}
+h3 {font-size: 18px; color: #c00; font-weight: normal; margin-bottom:1px; margin-top:12px; padding-bottom:2px; background:url(images/bluegrad.gif) left bottom no-repeat; text-align:left}
+h3.short {background-image:url(images/bluegradshort.gif); text-align:left}
+h3.notop {margin-top:0px; text-align:left}
+h4 {font-size: 15px; color: #448; font-weight: bold; margin-bottom:0px; margin-top:12px; text-align:left}
+h5 {font-size: 14px; color: #844; font-weight: bold; margin-bottom:0px; margin-top:6px; text-align:left}
+
+table {text-align:left;}
+table.tb1 {background-color:#edf}
+table.tb1 tr {background-color:#fff;}
+table.tb1 tr.rw0 {background-color:#ffd; font-weight:bold}
+table.tb1 td {padding:0px 6px}
+table.tb2 {background-color:#edf}
+table.tb2 tr {background-color:#fff;}
+table.tb2 tr.rw0 {background-color:#ffd; font-weight:bold}
+table.tb2 td {padding:0px 4px}
+table.tb3 {background-color:#edf}
+table.tb3 tr {background-color:#fff;}
+table.tb3 tr.rw0 {background-color:#ffd; font-weight:bold}
+table.tb3 td {padding:0px 4px}
+
+table.pad4 td {padding:0px 4px}
+table.pad4 th {padding:0px 4px}
+table.pad8 td {padding:0px 8px}
+table.pad12 td {padding:0px 12px}
+td.td10 {font-size:11px}
+
+hr.thin {margin:0px}
+
+.h3 {font-size: 18px; color: #c00;}
+.h4 {font-size: 15px; color: #448; font-weight:bold;}
+.small {font-size:13px; color:black}
+.smaller {font-size:11px;}
+.norm {font-size:13px;}
+.hilite {font-size:15px; font-weight:bold;}
+.larger {font-size:15px;}
+.tournament {color:#55a; font-style:italic;}
+/*.new {padding-left:12px; color:#55a; font-family:Arial,non-serif; font-size:10px; font-style:italic;}*/
+.shade {background-color:#ffd}
+.sup {font-size:9px; vertical-align:4px}
+
+.white {color: #fff}
+.red {color: #c00}
+.blue {color: #339}
+.lightblue {color: #ccf}
+.lightyellow {color: #ff8}
+.green {color: #063}
+.ltgrey {color: #999}
+.grey {color: #777}
+.itgr {color: #999; font-style:italic}
+
+.crossout {text-decoration:line-through}
+
+ol {margin-top:7px; margin-bottom:7px; margin-left:30px; padding:0px;}
+ul {margin-top:7px; margin-bottom:7px; margin-left:22px; padding:0px; text-align:left;}
+ul.clubs {list-style-image:url(images/bulletclubs.gif);}
+ul.diamondsblue {list-style-image:url(images/bulletdiamondsB.gif);}
+ul.diamondsyellow {list-style-image:url(images/bulletdiamondsY.gif);}
+li {margin:7px 0}
+li.sep {margin:7px 0; padding-bottom:3px; border-bottom:solid #8ac 2px;}
+
+div.offtop {position:absolute; left:0px; top:-250px;}

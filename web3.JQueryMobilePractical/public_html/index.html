@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="page1">
+            <div data-role="header">
+                <img style="width: 100%; height: 100%;" src="Images/headerImage.png" alt="Imagine Music">
+            </div>
+            <div data-role="content">
+
+                <div style="margin: 0 auto; text-align: center;">
+                    <h2>Imaginary Musical Instrument Company</h2>
+                    <h3>Fine Wooden Folk Instruments</h3>
+                    <img src="Images/dulcimerLogo.png" alt="dulcimerLogo" width="200">
+                </div>
+                <p>
+                    Imaginary Musical Instrument Company makes instruments to cherish. 
+                    A family owned workshop where happy elves build guitars, mandolins, dulcimers, and dobros all day. 
+                    Our instruments are hand-crafted using spruce, maple and hair from the tails of hand-reared unicorns.
+                </p>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a class="ui-btn-active" href="#page1">Home</a></li>
+                        <li><a href="#page2">Instruments</a></li>
+                        <li><a href="#page3">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="page2">
+            <div data-role="header">
+                <h2>Instruments</h2>
+            </div>
+            <div data-role="content">
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h3>Strings</h3>
+                        <ul data-role="listview">
+                            <li><img src="Images/mandolin.jpg" alt="mandoline"><h3>Mandoline</h3><p>Traditional sweet tone</p></li>
+                            <li><img src="Images/fiddle.jpg" alt="fiddle"><h3>Fiddle</h3><p>The core of any folk group</p></li>
+                            <li><img src="Images/guitar.jpg" alt="guitar"><h3>Guitar</h3><p>A full range of acoustic guitars</p></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h3>Percussion</h3>
+                        <ul data-role="listview">
+                            <li><img src="Images/fotolia.jpg" alt="fotolia"><h3>Fotolia</h3><p>Ancient British drum</p></li>
+                            <li><img src="Images/gubas.jpg" alt="gubas"><h3>Gubas</h3><p>Traditional drum of Bengali</p></li>
+                            <li><img src="Images/kokiriko.jpg" alt="kokiriko"><h3>Kokiriko</h3><p>Hand drum played by folk da</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#page1">Home</a></li>
+                        <li><a class="ui-btn-active" href="#page2">Instruments</a></li>
+                        <li><a href="#page3">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="page3">
+            <div data-role="header">
+                <h2>Contact Us</h2>
+            </div>
+            <div data-role="content">
+                <p>Imaginary Musical Instrument Company</p>
+                    
+                <p>Kirjatyontekijankatu 4</p>
+                    
+                <p>00170 Helsinki, FINLAND</p>
+                
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#page1">Home</a></li>
+                        <li><a href="#page2">Instruments</a></li>
+                        <li><a class="ui-btn-active" href="#page3">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

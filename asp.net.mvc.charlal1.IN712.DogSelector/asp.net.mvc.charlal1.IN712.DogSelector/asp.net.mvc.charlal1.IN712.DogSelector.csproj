@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\DogImages\Thumbs.db" />
+    <Content Include="Content\jqm-docs.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
