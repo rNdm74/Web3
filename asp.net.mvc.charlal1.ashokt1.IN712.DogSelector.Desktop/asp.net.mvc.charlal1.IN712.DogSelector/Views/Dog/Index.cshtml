@@ -4,93 +4,110 @@
     ViewBag.Title = "Index";
 }
 
-<style>
-table
-{
-border-collapse:collapse;
-}
-table, th, td
-{
-border: 1px solid black;
-padding: 1em;
-
-}
-td {
-    text-align: center; /* center checkbox horizontally */
-    vertical-align: middle; /* center checkbox vertically */
-}
-</style>
-
-<p><a href='@Url.Content("~/Dog/ChooseDogForm")'>Home</a></p>
-
+<div class="page-header">
+  <h1>Welcome <small>Enter your preferences and we will find you the perfect dog</small></h1>
+</div>
 
 @using (Html.BeginForm("ChooseDogForm", "Dog", FormMethod.Post)) 
 {
-    <fieldset>
-        <legend> Doggie Details: </legend>
-        <br />
-        @Html.Label("Must be good with children:")<br />
-        @Html.RadioButton("GoodWithChildren", "true", true) Yes <br />
-        @Html.RadioButton("GoodWithChildren", "false") No <br />
-        <br />
-        @Html.Label("Drooling:")<br />
-        @Html.RadioButton("Drools", "true", true) No Slobbering <br />
-        @Html.RadioButton("Drools", "false") Don't mind <br />
-        <br />
-        @Html.Label("Coat Length:")<br />
-        @Html.RadioButton("Coatlength", "Short", true) Short <br />
-        @Html.RadioButton("Coatlength", "Medium") Medium <br />
-        @Html.RadioButton("Coatlength", "Long") Long <br />
-        <br />
-        @Html.Label("Preferences:")<br />
-        <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Low</th>
-                <th>Medium</th>
-                <th>High</th>
-                <th>No Preference</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
+    <div class="panel">
+    <br />
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="">@Html.Label("Must be good with children")</div>
+                </div>
+                <div class="panel-body">
+                @Html.RadioButton("GoodWithChildren", "true", true) Yes <br />
+                @Html.RadioButton("GoodWithChildren", "false") No <br />
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="">@Html.Label("Drooling")</div>
+                </div>
+                <div class="panel-body">
+                    @Html.RadioButton("Drools", "true", true) No Slobbering <br />
+                    @Html.RadioButton("Drools", "false") Don't mind <br />
+                </div>
+            </div>                    
+        </div>
+        <div class="col-md-2">            
+            <div class="panel panel-default">                        
+                <div class="panel-heading">
+                    <div class="">@Html.Label("Coat Length")</div>
+                </div>
+                <div class="panel-body">
+                    @Html.RadioButton("Coatlength", "Short", true) Short <br />
+                    @Html.RadioButton("Coatlength", "Medium") Medium <br />
+                    @Html.RadioButton("Coatlength", "Long") Long <br />
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="">@Html.Label("Preferred Size")</div>
+                </div>
+                <div class="panel-body">
+                    @Html.DropDownList("Size", ViewBag.Size as SelectList) <br />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="">@Html.Label("Preferences")</div>
+                </div>
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Low</th>
+                        <th>Medium</th>
+                        <th>High</th>
+                        <th>No Preference</th>
+                    </tr>
+                </thead>
+                <tbody>
          
-            <tr>
-                <td> @Html.Label("Activity Level")</td>
-                <td> @Html.RadioButton("ActivityLevel", "Low", true)</td>
-                <td> @Html.RadioButton("ActivityLevel", "Medium")</td>
-                <td> @Html.RadioButton("ActivityLevel", "High")</td>
-                <td> @Html.RadioButton("ActivityLevel", "NoPref")</td>
-            </tr>
-            <tr>
-                <td> @Html.Label("Shedding Level")</td>
-                <td> @Html.RadioButton("SheddingLevel", "Low", true)</td>
-                <td> @Html.RadioButton("SheddingLevel", "Medium")</td>
-                <td> @Html.RadioButton("SheddingLevel", "High")</td>
-                <td> @Html.RadioButton("SheddingLevel", "NoPref")</td>
-            </tr>
-            <tr>
-                <td> @Html.Label("Grooming Level")</td>
-                <td> @Html.RadioButton("GroomingLevel", "Low", true)</td>
-                <td> @Html.RadioButton("GroomingLevel", "Medium")</td>
-                <td> @Html.RadioButton("GroomingLevel", "High")</td>
-                <td> @Html.RadioButton("GroomingLevel", "NoPref")</td>
-            </tr>
-            <tr>
-                <td> @Html.Label("Intelligence Level")</td>
-                <td> @Html.RadioButton("IntelligenceLevel", "Low", true)</td>
-                <td> @Html.RadioButton("IntelligenceLevel", "Medium")</td>
-                <td> @Html.RadioButton("IntelligenceLevel", "High")</td>
-                <td> @Html.RadioButton("IntelligenceLevel", "NoPref")</td>
-            </tr>
-        </tbody>
-        </table>
-        <br />
-        @Html.Label("Preferred Size:")
-        @Html.DropDownList("Size", ViewBag.Size as SelectList) <br />
-        <br />
-        <input type="submit" value="Find My Dog !"/>
-    </fieldset>
-    
-    
+                    <tr>
+                        <td> @Html.Label("Activity Level")</td>
+                        <td> @Html.RadioButton("ActivityLevel", "Low", true)</td>
+                        <td> @Html.RadioButton("ActivityLevel", "Medium")</td>
+                        <td> @Html.RadioButton("ActivityLevel", "High")</td>
+                        <td> @Html.RadioButton("ActivityLevel", "NoPref")</td>
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("Shedding Level")</td>
+                        <td> @Html.RadioButton("SheddingLevel", "Low", true)</td>
+                        <td> @Html.RadioButton("SheddingLevel", "Medium")</td>
+                        <td> @Html.RadioButton("SheddingLevel", "High")</td>
+                        <td> @Html.RadioButton("SheddingLevel", "NoPref")</td>
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("Grooming Level")</td>
+                        <td> @Html.RadioButton("GroomingLevel", "Low", true)</td>
+                        <td> @Html.RadioButton("GroomingLevel", "Medium")</td>
+                        <td> @Html.RadioButton("GroomingLevel", "High")</td>
+                        <td> @Html.RadioButton("GroomingLevel", "NoPref")</td>
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("Intelligence Level")</td>
+                        <td> @Html.RadioButton("IntelligenceLevel", "Low", true)</td>
+                        <td> @Html.RadioButton("IntelligenceLevel", "Medium")</td>
+                        <td> @Html.RadioButton("IntelligenceLevel", "High")</td>
+                        <td> @Html.RadioButton("IntelligenceLevel", "NoPref")</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>  
+                               
+        <div class="panel-body">
+            <input type="submit" class="btn btn-primary pull-right" value="Find My Dog !"/>
+        </div>
+
+        </div>      
+    </div>    
 }

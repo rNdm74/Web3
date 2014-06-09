@@ -5,3 +5,10 @@ C:\Users\rNdm\Desktop\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.
 C:\Users\rNdm\Desktop\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\obj\Debug\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile.csprojResolveAssemblyReference.cache
 C:\Users\rNdm\Desktop\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\obj\Debug\asp.net.mvc.charlal1.IN712.DogSelector.dll
 C:\Users\rNdm\Desktop\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\obj\Debug\asp.net.mvc.charlal1.IN712.DogSelector.pdb
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\bin\asp.net.mvc.charlal1.IN712.DogSelector.dll
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\bin\asp.net.mvc.charlal1.IN712.DogSelector.pdb
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\bin\EntityFramework.dll
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\bin\EntityFramework.xml
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\obj\Debug\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile.csprojResolveAssemblyReference.cache
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\obj\Debug\asp.net.mvc.charlal1.IN712.DogSelector.dll
+E:\Work\Web3\asp.net.mvc.charlal1.ashokt1.IN712.DogSelector.Mobile\asp.net.mvc.charlal1.IN712.DogSelector\obj\Debug\asp.net.mvc.charlal1.IN712.DogSelector.pdb

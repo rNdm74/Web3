@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Banner\banner.jpg" />
     <Content Include="Content\DogImages\AfghanHound.jpg" />
     <Content Include="Content\DogImages\BassetHound.jpg" />
     <Content Include="Content\DogImages\Beagle.jpg" />
